@@ -148,6 +148,14 @@ nav .wrapper7 {
     width: 100px;
     margin-left: 15px;
     }
+    .blue{
+      background-color: #0066CC !important;
+      color: white !important;
+    }
+    .red{
+      background-color: #ff453a !important;
+      color: white !important;
+    }
 @media screen and (max-width: 970px) {
   .wrapper7 .btn {
     display: block;
