@@ -1,0 +1,96 @@
+
+
+
+.body1 {
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container2 {
+  text-align: center;
+  max-width: 977px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  margin-top: 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjusted columns to fit 4 cards per line */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #333333;
+  border: 1px solid #444;
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+  text-align: left;
+  overflow: hidden; /* Ensure image does not overflow */
+  position: relative; /* For positioning the hidden description */
+  padding: 15px;
+}
+
+.card img {
+  width: 100%; /* Make image fit the card width */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+}
+
+.card h2 {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+.card p a{
+    color: green;
+    text-decoration: none;
+}
+/* .card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #6CC800;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #6CC800;
+  border-radius: 5px;
+} */
+
+/* .card a:hover {
+  background-color: #6CC800;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+} */
+
+.description {
+  display: none; /* Hide description by default */
+  margin-top: 10px;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .grid {
+      grid-template-columns: 1fr;
+  }
+}

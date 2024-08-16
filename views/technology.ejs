@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Technology</title>
+    <link rel="stylesheet" href="/css/technology.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body>
+  <nav>
+    <div class="wrapper7">
+      <div class="logo"><a href="/index.html"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#" class="desktop-item">Service</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">Service</label>
+          <div class="mega-box">
+            <div class="content6">
+              <div class="row">
+                <ul class="mega-links">
+                <li><a href="/development.html">All Types Of Development</a></li>
+                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                  <li><a href="/deep_researching.html">Deep Researching</a></li>
+                  <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                  <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                  <li><a href="/api.html"> Creating API & Customisation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/technology">Technology</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://meet.techtasa.com/">Meet</a></li>
+       <li><a href="/career">Career</a></li>
+        <li><a href="/apps">App</a></li>
+        <li class="navbar-nav-list-links butt"><a href="/contact" class="linkss">Contact</a></li>
+        <% if (loggedin) { %>
+          <li class="navbar-nav-list-links butt"><a href="/dashboard" class="linkss blue">Dashboard</a></li>
+          <li class="navbar-nav-list-links butt "><a href="/auth/logout" class="linkss red">Logout</a></li>
+      <% } else { %>
+        <li class="navbar-nav-list-links butt"><a href="/auth/login" class="linkss">Login</a></li>
+      <% } %>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+    <section class="body1">
+        <div class="container2">
+            <h1>Frontend Development</h1>
+            <!-- First Section -->
+            <div class="grid">
+            <div class="card"> 
+                    <img src="images/html5.png" alt="Image 1">
+                    <h2>HTML5</h2>
+                    <p>HTML5 is the latest version of HTML (Hypertext Markup Language), used for structuring content on the web. <a href="/pages/htmlpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a> -->
+                    <!-- <p class="description">HTML5 is the latest version of HTML (Hypertext Markup Language), used for structuring content on the web.</p> -->
+                </div>
+              
+                <div class="card">
+                    <img src="images/css3.png" alt="Image 2">
+                    <h2>CSS3</h2>
+                    <p>CSS3 (Cascading Style Sheets) is used for styling HTML elements, defining how HTML elements are to be displayed.  <a href="/pages/csspage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">CSS3 (Cascading Style Sheets) is used for styling HTML elements, defining how HTML elements are to be displayed.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/JavaScript.png" alt="Image 3">
+                    <h2>JavaScript</h2>
+                    <p>JavaScript is a powerful programming language used to create interactive effects within web browsers.<br><a href="/pages/javascriptpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">JavaScript is a powerful programming language used to create interactive effects within web browsers.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/angular.png" alt="Image 4" style="width: 70%; height: 30vh;">
+                    <h2>Angular</h2>
+                    <p>Angular is a TypeScript-based open-source web application framework maintained by Google. It is used for building single-page client applications with a modular and scalable architecture.<br><a href="/pages/angularpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Angular is a TypeScript-based open-source web application framework maintained by Google. It is used for building single-page client applications with a modular and scalable architecture.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/react.png" alt="Image 4">
+                    <h2>React</h2>
+                    <p>React is a JavaScript library for building user interfaces, developed and maintained by Facebook. It allows developers to create reusable UI components that update efficiently in response to data changes <a href="/pages/reactjspage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">React is a JavaScript library for building user interfaces, developed and maintained by Facebook. It allows developers to create reusable UI components that update efficiently in response to data changes</p> -->
+                </div>
+              
+            </div>
+        </div>
+        <div class="container2">
+            <h1>Backend Development</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="images/php.png" alt="Image 5">
+                    <h2>PHP</h2>
+                    <p>PHP is a server-side scripting language designed for web development. It is used to create dynamic web pages and server-side applications<a href="/pages/phppage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">PHP is a server-side scripting language designed for web development. It is used to create dynamic web pages and server-side applications</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/flask.png" alt="Image 8">
+                    <h2>Flask</h2>
+                    <p>Flask is a lightweight Python web framework that is designed with simplicity and flexibility in mind. It provides the essentials for building web applications without imposing a specific way of doing things. <a href="/pages/flaskpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Flask is a lightweight Python web framework that is designed with simplicity and flexibility in mind. It provides the essentials for building web applications without imposing a specific way of doing things.</p> -->
+                </div>
+           
+                <div class="card">
+                    <img src="images/python.png" alt="Image 7">
+                    <h2>Python</h2>
+                    <p>Python is a versatile and easy-to-read programming language used for web development, scientific computing, artificial intelligence, and more.<a href="/pages/pythonpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Python is a versatile and easy-to-read programming language used for web development, scientific computing, artificial intelligence, and more.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/django.png" alt="Image 8" style="margin-top: -5rem;">
+                    <h2 style="margin-top: -50px;">Django</h2>
+                    <p>Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It follows the dont repeat yourself (DRY) principle and includes features such as an ORM (Object-Relational Mapping) system and admin interface.<a href="/pages/djangopage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It follows the dont repeat yourself (DRY) principle and includes features such as an ORM (Object-Relational Mapping) system and admin interface.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/nodejs.png" alt="Image 6">
+                    <h2>Node.js</h2>
+                    <p>Node.js is a JavaScript runtime built on Chromes V8 JavaScript engine. It allows developers to run JavaScript on the server-side, enabling the development of scalable network applications.<a href="/pages/nodejspage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Node.js is a JavaScript runtime built on Chromes V8 JavaScript engine. It allows developers to run JavaScript on the server-side, enabling the development of scalable network applications.</p> -->
+                </div>
+    
+    
+            
+            </div>
+        </div>
+    
+        <div class="container2">
+            <h1>Databases</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="images/mysql.png" alt="Image 10">
+                    <h2>MySQL</h2>
+                    <p>MySQL is a popular open-source relational database management system (RDBMS). It uses SQL (Structured Query Language) to manage and manipulate data in tables.<br><a href="/pages/mysqlpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">MySQL is a popular open-source relational database management system (RDBMS). It uses SQL (Structured Query Language) to manage and manipulate data in tables.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/MongoDB.png" alt="Image 11">
+                    <h2>MongoDB</h2>
+                    <p>MongoDB is a NoSQL database program that uses JSON-like documents with schema. It is known for its flexibility and scalability, making it suitable for handling large volumes of unstructured data.<a href="/pages/mongodbpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">MongoDB is a NoSQL database program that uses JSON-like documents with schema. It is known for its flexibility and scalability, making it suitable for handling large volumes of unstructured data.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/PostgreSQL.png" alt="Image 12">
+                    <h2>PostgreSQL</h2>
+                    <p>PostgreSQL is a powerful, open-source object-relational database system.It supports a wide range of features including multi-version concurrency control (MVCC), full-text search, and JSONB (JSON Binary Object Notation).<a href="/pages/postgresqlpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">PostgreSQL is a powerful, open-source object-relational database system.It supports a wide range of features including multi-version concurrency control (MVCC), full-text search, and JSONB (JSON Binary Object Notation).</p> -->
+                </div>
+            </div>
+        </div>
+    
+        <div class="container2">
+            <h1>Mobile Development</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="images/swift.png" alt="Image 10">
+                    <h2>Swift</h2>
+                    <p>Swift is a programming language developed by Apple for iOS, macOS, watchOS, and tvOS app development. It is designed to be safe, fast, and expressive.<br><a href="/pages/swiftpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Swift is a programming language developed by Apple for iOS, macOS, watchOS, and tvOS app development. It is designed to be safe, fast, and expressive.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/Kotlin.png" alt="Image 11">
+                    <h2>Kotlin</h2>
+                    <p>Kotlin is a statically-typed programming language developed by JetBrains for modern multi-platform applications. It is the preferred language for Android app development, offering interoperability with Java.<br>  <a href="/pages/kotlinpage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Kotlin is a statically-typed programming language developed by JetBrains for modern multi-platform applications. It is the preferred language for Android app development, offering interoperability with Java.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/React Native.png" alt="Image 12">
+                    <h2>React Native</h2>
+                    <p>React Native is a framework for building native mobile applications using JavaScript and React. It allows developers to write mobile applications that run on both iOS and Android platforms with a single codebase.<a href="/pages/reactnativepage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">React Native is a framework for building native mobile applications using JavaScript and React. It allows developers to write mobile applications that run on both iOS and Android platforms with a single codebase.</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="container2">
+            <h1>E-commerce Platforms</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="images/Magento.png" alt="Image 13">
+                    <h2>Magento</h2>
+                    <p>Magento is an open-source e-commerce platform written in PHP. It provides merchants with a flexible shopping cart system, as well as control over the look, content, and functionality of their online store.<a href="/pages/magentopage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Magento is an open-source e-commerce platform written in PHP. It provides merchants with a flexible shopping cart system, as well as control over the look, content, and functionality of their online store.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/WooCommerce.png" alt="Image 14">
+                    <h2>WooCommerce</h2>
+                    <p>WooCommerce is a WordPress plugin that adds e-commerce functionality to WordPress websites. It is customizable and integrates seamlessly with WordPress themes and extensions.<a href="/pages/woocommercepage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">WooCommerce is a WordPress plugin that adds e-commerce functionality to WordPress websites. It is customizable and integrates seamlessly with WordPress themes and extensions.</p> -->
+                </div>
+                <div class="card">
+                    <img src="images/shopify.png" alt="Image 15">
+                    <h2>Shopify</h2>
+                    <p>Shopify is a hosted e-commerce solution that allows merchants to set up an online store and sell products. It provides a range of customizable templates, secure payment options, and marketing tools.<a href="/pages/shopifypage.html">Read More</a></p>
+                    <!-- <a href="#" class="toggle-description">Read More</a>
+                    <p class="description">Shopify is a hosted e-commerce solution that allows merchants to set up an online store and sell products. It provides a range of customizable templates, secure payment options, and marketing tools.</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('.toggle-description').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const description = this.nextElementSibling;
+                description.style.display = description.style.display === 'block' ? 'none' : 'block';
+                this.textContent = description.style.display === 'block' ? 'Read Less' : 'Read More';
+            });
+        });
+    </script>
+</body>
+<script src="script.js"></script>
+<footer class="footerccc">
+    <div class="footer-containerccc">
+      <div class="footer-sectionccc">
+        <a href="/">
+          <img src="images/Tech_Tasa_Logo.webp" alt="" class="footer-logoccc">
+        </a>
+        <p>Our innovative approach ensures seamless integration and unparalleled performance, driving your business forward in the digital age.</p>
+      </div>
+      <div class="footer-sectionccc">
+        <h4>Quick Menu</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/projects">Work</a></li>
+          <li><a href="/services.html">Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-sectionccc">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+         <li><a href="/career">Career</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-sectionccc">
+        <h4>Subscribe to our newsletter</h4>
+        <p>Subscribe now to be updated with the latest features</p>
+        <form>
+          <div class="subscribe-container">
+            <input type="email" placeholder="Enter your Email" class="email-input">
+            <button class="subscribe-button">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottomccc">
+      <p>&copy; 2024 TECHTASA All Rights Reserved</p>
+      <div class="social-iconsccc">
+        <a href="https://www.facebook.com/techtasa/"><img src="images/fb.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/tech.tasa/"><img src="images/IG.png" alt="Instagram"></a>
+        <a href="https://x.com/Tech_Tasa"><img src="images/tw.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+</html>

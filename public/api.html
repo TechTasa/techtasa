@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Testing | TechTasa</title>
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: #000;
+            color: #6CC800;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #hero {
+            background: linear-gradient(to bottom, #000, #111);
+            padding: 60px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            background-color: #6CC800;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: #6CC800;
+            padding-top: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 200, 0, 0.2);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: #6CC800;
+        }
+
+        .card-content {
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Style for the info cards */
+        .info-card {
+            display: flex;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-card img {
+            width: 360px;
+            object-fit: cover;
+        }
+
+        .info-content {
+            padding: 20px;
+            width: 60%;
+        }
+
+        .info-content h3 {
+            color: #6CC800;
+        }
+
+        /* Media query for mobile view */
+        @media (max-width: 768px) {
+            .info-card {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .info-content {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ************************ */
+
+        #contact-us {
+            background-color: #333;
+            padding: 60px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #000;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .contact-container::before {
+            content: "\f095";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: #6CC800;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #000;
+        }
+
+        .contact-container h2 {
+            margin-top: 0;
+            color: #6CC800;
+            padding-top: 25px;
+        }
+
+        .contact-container p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #6CC800;
+            color: #000;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 20px;
+            }
+
+            .cta-button {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        /* *******************navbar******************** */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+nav {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  background: black;
+}
+nav .wrapper7 {
+  position: relative;
+  max-width: 1300px;
+  padding: 0px 30px;
+  height: 70px;
+  line-height: 70px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper7 .logo a {
+  color: #f2f2f2;
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.wrapper7 .nav-links {
+  display: inline-flex;
+}
+.nav-links li {
+  list-style: none;
+}
+.nav-links li a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 9px 15px;
+  /* border-radius: 5px; */
+  transition: all 0.3s ease;
+}
+.nav-links li a:hover {
+  background: #64ff00;
+  color: black;
+}
+.nav-links .mobile-item {
+  display: none;
+}
+.nav-links .drop-menu {
+  position: absolute;
+  background: #242526;
+  width: 180px;
+  line-height: 45px;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.nav-links li:hover .drop-menu,
+.nav-links li:hover .mega-box {
+  transition: all 0.3s ease;
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+}
+.drop-menu li a {
+  width: 100%;
+  display: block;
+  padding: 0 0 0 15px;
+  font-weight: 400;
+  border-radius: 0px;
+}
+.mega-box {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 0 30px;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+}
+.mega-box .content6 {
+  background: #242526;
+  padding: 25px 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.mega-box .content6 .row {
+  width: calc(25% - 20px);
+  line-height: 45px;
+}
+.content6 .row img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content6 .row header {
+  color: #f2f2f2;
+  font-size: 20px;
+  font-weight: 500;
+}
+.content6 .row .mega-links {
+  margin-left: -40px;
+  border-left: 1px solid rgba(255, 255, 255, 0.09);
+}
+.row .mega-links li {
+  padding: 0 20px;
+}
+.row .mega-links li a {
+  padding: 0px;
+  padding: 0 20px;
+  color: #d9d9d9;
+  font-size: 17px;
+  display: block;
+}
+.row .mega-links li a:hover {
+  color: black;
+}
+.wrapper7 .btn {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+.wrapper7 .btn.close-btn {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+}
+.butt .linkss {
+    background: #64FF00;
+    padding: 9px;
+    font-size: 15px;
+    color: black;
+    width: 100px;
+    margin-left: 15px;
+    }
+@media screen and (max-width: 970px) {
+  .wrapper7 .btn {
+    display: block;
+  }
+  .wrapper7 .nav-links {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    max-width: 350px;
+    top: 0;
+    left: -100%;
+    background: #242526;
+    display: block;
+    padding: 50px 10px;
+    line-height: 50px;
+    overflow-y: auto;
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
+    transition: all 0.3s ease;
+  }
+  /* custom scroll bar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #64ff00;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #64ff00;
+  }
+  #menu-btn:checked ~ .nav-links {
+    left: 0%;
+  }
+  #menu-btn:checked ~ .btn.menu-btn {
+    display: none;
+  }
+  #close-btn:checked ~ .btn.menu-btn {
+    display: block;
+  }
+  .nav-links li {
+    margin: 15px 10px;
+  }
+  .nav-links li a {
+    padding: 0 20px;
+    display: block;
+    font-size: 20px;
+  }
+  .nav-links .drop-menu {
+    position: static;
+    opacity: 1;
+    top: 65px;
+    visibility: visible;
+    padding-left: 20px;
+    width: 100%;
+    max-height: 0px;
+    overflow: hidden;
+    box-shadow: none;
+    transition: all 0.3s ease;
+  }
+  #showDrop:checked ~ .drop-menu,
+  #showMega:checked ~ .mega-box {
+    max-height: 100%;
+  }
+  .nav-links .desktop-item {
+    display: none;
+  }
+  .nav-links .mobile-item {
+    display: block;
+    color: #f2f2f2;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  .nav-links .mobile-item:hover {
+    background: #64ff00;
+    color: black;
+  }
+  .drop-menu li {
+    margin: 0;
+  }
+  .drop-menu li a {
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  .mega-box {
+    position: static;
+    top: 65px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 20px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .mega-box .content6 {
+    box-shadow: none;
+    flex-direction: column;
+    padding: 20px 20px 0 20px;
+  }
+  .mega-box .content6 .row {
+    width: 100%;
+    margin-bottom: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mega-box .content6 .row:nth-child(1),
+  .mega-box .content6 .row:nth-child(2) {
+    border-top: 0px;
+  }
+  .content6 .row .mega-links {
+    border-left: 0px;
+    padding-left: 15px;
+  }
+  .row .mega-links li {
+    margin: 0;
+  }
+  .content6 .row header {
+    font-size: 19px;
+  }
+}
+nav input {
+  display: none;
+}
+    </style>
+</head>
+<body>
+  <nav>
+    <div class="wrapper7">
+      <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#" class="desktop-item">Service</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">Service</label>
+          <div class="mega-box">
+            <div class="content6">
+              <div class="row">
+                <ul class="mega-links">
+                <li><a href="/development.html">All Types Of Development</a></li>
+                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                  <li><a href="/deep_researching.html">Deep Researching</a></li>
+                  <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                  <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                  <li><a href="/api.html"> Creating API & Customisation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/technology">Technology</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://meet.techtasa.com/">Meet</a></li>
+       <li><a href="/career">Career</a></li>
+        <li><a href="/apps">App</a></li>
+        <li class="navbar-nav-list-links butt"><a href="/contactus.html" class="linkss">Contact</a></li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h2>Creating API & Customization Services</h2>
+                <p>Expertly crafted content to drive traffic and enhance your online visibility.</p>
+                <a href="#contact-us" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <section id="introduction">
+            <h2> Introduction</h2>
+            <p>Welcome to TechTasa! We’re here to help ensure your software is top-notch throughour detailed deep testing and code testing services. Our goal is to make sure your
+                software runs smoothly, efficiently, and without any bugs. Whether you’re launchinga new application or maintaining an existing one, our experienced teamis ready toprovide the thorough testing you need to guarantee everything works perfectly.</p>
+        </section>
+
+        <section id="detailed-information">
+            <h2>Detailed Information</h2>
+            <div class="info-card">
+                <img src="images/testing1.png" alt="SEO Content Writing">
+                <div class="info-content">
+                    <h3>Deep Testing</h3>
+                    <p>Deep testing involves a thorough examination of your entire softwaresystem to ensure every part is working as it should. Here’s what we cover:
+                        <ul>
+                            <li>TFunctional Testing: We check if all features and functions of your software work correctly. This includes testing different scenarios to ensure the software behaves as expected in various
+                                situations.</li>
+                            <li>Performance Testing: We assess how your software performs under different conditions. This includes checking how well it handles high traffic or heavy usage and making sure it runs
+                                smoothly over time</li>
+                            <li>Security Testing: We look for vulnerabilities that could be exploited by hackers. Our testing
+                                helps protect your software from potential threats and ensures your data is secure.</li>
+                                <li>Usability Testing: We evaluate how user-friendly your software is. This includes checking if
+                                    it’s easy to navigate, understand, and use for your target audience.</li>
+                                    <li>Compatibility Testing: We ensure that your software works well across different devices, operating systems, and web browsers. This makes sure that all users have a consistent
+                                        experience, no matter how they access your software.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="info-card">
+                <img src="images/testing2.png" alt="Keyword Research">
+                <div class="info-content">
+                    <h3>Code Customization</h3>
+                    <p>Our code customization services are designed to tailor your software to meet your specific needs. Here’s how we can help:
+                        <ul>
+                            <li>Custom Features: We can add unique features to your software that cater to your business needs. This helps differentiate your software from competitors and provides added value to your users.</li>
+                            <li>Integration: We ensure that your software integrates seamlessly with other systems and applications you use. This includes connecting APIs, databases, and third-party services to streamline your
+                                operations.</li>
+                            <li>Optimization: We optimize your code to improve performance and efficiency. This includes refactoring, debugging, and fine-tuning your software to make it faster and more reliable.</li>
+                            <li>Maintenance: We provide ongoing maintenance and support to keep your software up-to-date and running smoothly. This includes regular updates, bug fixes, and technical support to address any issues that arise.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-us">
+            <div class="contact-container">
+                <h2>Contact Us</h2>
+                <p>If you’re ready to ensure your software is performing at its best, contact us today. Our team is here to provide the deep testing and code customization services you need to succeed.</p>
+                <a href="mailto:info@techtasa.com" class="cta-button">Email Us</a>
+            </div>
+        </section>
+    </main>
+</body>
+<footer class="footerccc">
+  <div class="footer-containerccc">
+    <div class="footer-sectionccc">
+      <a href="/">
+        <img src="images/Tech_Tasa_Logo.webp" alt="" class="footer-logoccc">
+      </a>
+      <p>Our innovative approach ensures seamless integration and unparalleled performance, driving your business forward in the digital age.</p>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Quick Menu</h4>
+      <ul>
+        <li><a href="/aboutus.html">About</a></li>
+        <li><a href="/ourprojects.html">Work</a></li>
+        <li><a href="/services.html">Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="/blogpage.html">Blog</a></li>
+        <li><a href="/career.html">Career</a></li>
+        <li><a href="/contactus.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Subscribe to our newsletter</h4>
+      <p>Subscribe now to be updated with the latest features</p>
+      <form>
+        <div class="subscribe-container">
+          <input type="email" placeholder="Enter your Email" class="email-input">
+          <button class="subscribe-button">Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottomccc">
+    <p>&copy; 2024 TECHTASA All Rights Reserved</p>
+    <div class="social-iconsccc">
+      <a href="https://www.facebook.com/techtasa/"><img src="images/fb.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/tech.tasa/"><img src="images/IG.png" alt="Instagram"></a>
+      <a href="https://x.com/Tech_Tasa"><img src="images/tw.png" alt="Twitter"></a>
+    </div>
+  </div>
+</footer>
+</html>

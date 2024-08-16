@@ -1,0 +1,131 @@
+<section class="tab">
+  <h1 class="about">Our Services</h1>
+  <div class="content">
+    <div class="right">
+      <img src="/cimages/fex.jpg" alt="" id="dynamicimg">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Flexible Workspaces</h1>
+        <p>These are Usually Available on Flexible Terms Hourly, Daily, Monthly. </p>
+        <div class="dox2">
+
+          <div class="box1">Shared Desks</div>
+          <div class="box1">Dedicated Desks</div>
+          <div class="box1">Private Offices</div>
+          <div class="box1">Meeting Room</div>
+          <div class="box1" style="margin-bottom: 10px;">Conference Room</div>
+        </div>
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/filexible.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="left">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">High-Speed Internet</h1>
+        <p>
+         Reliable and High-Speed Internet Connectivity is a Standard Offering in Co-Working Spaces.
+        </p>
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/hight.mp4" type="video/mp4">
+        </video>
+      </div>
+      <img src="/cimages/speed.jpg" alt="">
+    </div>
+  </div>
+  <div class="content">
+    <div class="right">
+      <img src="/cimages/cumi.jpg" alt="" id="dynamicimg2">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Community Events</h1>
+        <p> These are Organized to Foster Collaboration and Networking Among Members.  </p>
+        <div class="dox2">
+          <div class="box2">Networking Events</div>
+          <div class="box2">Workshops</div>
+          <div class="box2">Seminars</div>
+          <div class="box2" style="margin-bottom: 10px;">Social Gatherings</div>
+        </div>
+      
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/event.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="left">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Amenities</h1>
+        <p>
+          These Facilities Such as are Often Provided.
+        </p>
+        <div class="dox2">
+          <div class="box3">Printers</div>
+          <div class="box3">Scanners</div>
+          <div class="box3">Copiers</div>
+        </div>
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/ame.mp4" type="video/mp4">
+        </video>
+      </div>
+      <img src="/cimages/copy.jpg" alt="" id="dynamicimg3">
+    </div>
+  </div>
+  <!--  -->
+  <div class="content">
+    <div class="right">
+      <img src="/images/bach10.webp" alt="" id="dynamicimg4">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Tech Infrastructure</h1>
+        <p> These Advanced Tech infrastructure Such as May be Available for Use. </p>
+        <div class="dox2">
+          <div class="box4">Video Conferencing Equipment</div>
+          <div class="box4">Projectors</div>
+          <div class="box4" style="margin-bottom: 10px;">Smartboards </div>
+        </div>
+      
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/tech_influ.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="left">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Teachers as Per There  Requirements</h1>
+        <p>
+          Empowering Educators: Your Space for Teaching and Creating
+
+          At Workaholik, we believe in the power of education to transform lives and shape the future. That's why we're proud to offer a specialized service tailored to the needs of educators: our dedicated Education space.
+          <a href="/html/teacher.html">Read More</a>
+        
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/teacher33.mp4" type="video/mp4">
+        </video>
+      </div>
+      <img src="/images/img2.webp" alt="" id="dynamicimg3">
+    </div>
+  </div>
+   <div class="content">
+    <div class="right">
+      <img src="/images/th.jfif" alt="">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Influencers And Promoters</h1>
+        <p>
+        We welcome both Genders to connect with us. We help both genders to create nice videos- Blogs Broadcast. Also we give full support from our end we will suggest Topics then our experienced experts will do deep research for a decided topic after we create final script for topic also we create images related to topic. Then we check everything 3 times after that we will do change or edit if needed once this process is done then we give final confirmations to our clients that they can share this on public platforms.
+        </p>
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/influ.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="left">
+      <div>
+        <h1 style="font-size: 30px; font-weight: 800;">Startup’s</h1>
+        <p>
+         can you our space Also we will give full support from our end like Computers laptops development support Digital Marketing support Graphic Designing support Content Writing support - creating videos and photo support from our Experienced partners .  Also our Partner will help them to promote there brand as well . Also get suggestions from our experienced partners 
+        </p>
+        <video class="ourvideo" width="100%" controls>
+          <source src="/cimages/startup.mp4" type="video/mp4">
+        </video>
+      </div>
+      <img src="/images/IWD.png" alt="">
+    </div>
+  </div>
+</section>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <title>Document</title>
+</head>
+<style>
+ body{
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: system-ui;
+}
+.container h1{
+  color: #6cc800;
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 40px;
+  font-weight: 900;
+}
+.card1 {
+  color: white;
+  padding: 1rem;
+}
+.card1 h2{
+  font-size: 40px;
+  font-weight: 900;
+  color: #6cc800;
+}
+.cards1 {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.card2 {
+  color: white;
+  padding: 1rem;
+}
+.card2 h2{
+  font-size: 40px;
+  font-weight: 900;
+  color: #6cc800;
+}
+.cards2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.card3 {
+  color: white;
+  padding: 1rem;
+}
+.card3 h3{
+  font-size: 35px;
+  color: #6cc800;
+  font-weight: 900;
+  text-align: center;
+}
+.cards3 {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.card4 h3{
+  text-align: center;
+}
+/*  */
+
+/*  */
+.card5 {
+  color: white;
+  padding: 1rem;
+}
+
+.cards5 {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.tiyle h2{
+  text-align: center;
+  font-size: 40px;
+  font-weight: 900;
+  color: #6cc800;
+}
+/*  */
+/*  */
+.cards4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.card4 {
+    background: linear-gradient(135deg, #a8e063, #56ab2f);
+    border-radius: 15px;
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card4::before {
+    content: '';
+    position: absolute;
+    top: -75%;
+    left: -75%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+}
+
+.card4:hover::before {
+    transform: rotate(45deg) translate(10%, 10%);
+}
+
+.card4:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card4 h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.card4 p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+/*  */
+.mains {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #fff; /* White text color for readability */
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cards6 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card6 {
+            background: linear-gradient(135deg, #6cc800, #8fc800); /* Gradient green background */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            flex: 1 1 calc(30% - 20px);
+            max-width: calc(30% - 20px);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            margin-bottom: 20px; /* Extra spacing between rows */
+        }
+
+        .card6::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .card6:hover::before {
+            opacity: 1;
+        }
+
+        .card6:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .card6 h3 {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #000; /* Black text color */
+            z-index: 2;
+            position: relative;
+        }
+
+        .card6 p {
+            padding: 0 20px 20px;
+            line-height: 1.6;
+            color: #000; /* Black text color */
+            z-index: 2;
+            position: relative;
+        }
+
+        .card6 .icon {
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .card6 {
+                flex: 1 1 calc(45% - 20px);
+                max-width: calc(45% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card6 {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+/*  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.making {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contact-container {
+    background: linear-gradient(135deg, #6cc800, #8fc800); /* Gradient background */
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.contact-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,0,0,0.1), transparent);
+    z-index: 0;
+    transform: rotate(45deg);
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact-content a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-content a:hover {
+    background-color: #333;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 20px;
+    }
+
+    .contact-content h2 {
+        font-size: 2rem;
+    }
+
+    .contact-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-content p {
+        font-size: 0.9rem;
+    }
+}
+.card3 p{
+    text-align: center;
+}
+</style>
+<body>
+  <nav>
+    <div class="wrapper7">
+      <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#" class="desktop-item">Service</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">Service</label>
+          <div class="mega-box">
+            <div class="content6">
+              <div class="row">
+                <ul class="mega-links">
+                <li><a href="/development.html">All Types Of Development</a></li>
+                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                  <li><a href="/deep_researching.html">Deep Researching</a></li>
+                  <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                  <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                  <li><a href="/api.html"> Creating API & Customisation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/technology">Technology</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="https://meet.techtasa.com/">Meet</a></li>
+       <li><a href="/career">Career</a></li>
+        <li><a href="/apps">App</a></li>
+        <li class="navbar-nav-list-links butt"><a href="/contactus.html" class="linkss">Contact</a></li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+    <header>
+        <div class="container">
+            <h1>Human Support as per Industry</h1>
+        </div>
+    </header>
+    <div class="cards1">
+        <div class="card1">
+            <h2>Introduction</h2>
+            <p>Welcome to TechTasa! We understand that every industry has its unique challenges
+                and requirements. That’s why we offer tailored Human Support services designed to
+                meet the specific needs of your industry. Our goal is to provide you with the
+                specialized assistance you need to overcome obstacles, streamline your operations, and achieve your business goals. Whether you’re in technology, healthcare, finance, or any other sector, our expert team is here to support you every step of the way</p>
+        </div>
+      </div>
+      <div class="cards2">
+        <div class="card2">
+            <h2>Detailed Information</h2>
+        </div>
+      </div>
+      <div class="cards3">
+        <div class="card3">
+            <h3>Industry-Specific Expertise:</h3>
+            <p>Our support is customized to fit the particular needs of
+                your industry. We recognize that each sector has its own set of challenges, so we
+                provide:</p>
+        </div>
+      </div>
+      <div class="cards4">
+        <div class="card4">
+            <h3>Tailored Solutions</h3>
+            <p>We design our support services to fit the unique requirements of your
+                industry, ensuring that the solutions we offer are effective and relevant..</p>
+        </div>
+        <div class="card4">
+            <h3>In-Depth Knowledge</h3>
+            <p>Our team is well-versed in various industries, which allows us to offer
+                insights and advice based on current trends, best practices, and industry standards.</p>
+        </div>
+    </div>
+      <!--  -->
+      <div class="cards3">
+        <div class="card3">
+            <h3>Comprehensive Support Services</h3>
+            <p>We provide a wide range of support services to
+                cover all aspects of your industry needs, including:</p>
+        </div>
+      </div>
+      <div class="cards4">
+        <div class="card4">
+            <h3>Technical Support</h3>
+            <p>We assist with technical problems related to your industry-specific tools
+                and systems, ensuring that everything functions properly.</p>
+        </div>
+        <div class="card4">
+            <h3>Customer Support</h3>
+            <p>We help manage customer interactions and resolve issues to maintain
+                high levels of customer satisfaction and loyalty.</p>
+        </div>
+        <div class="card4">
+            <h3>Operational Support</h3>
+            <p>We offer guidance to optimize your business operations, improve
+                efficiency, and streamline processes</p>
+        </div>
+    </div>
+      <!--  -->
+      <!--  -->
+      <div class="cards3">
+        <div class="card3">
+            <h3>Proactive Solutions</h3>
+            <p>Our approach goes beyond reacting to problems; we also focus
+                on preventing them. This includes:</p>
+        </div>
+      </div>
+      <div class="cards4">
+        <div class="card4">
+            <h3>Regular Check-Ins</h3>
+            <p>We perform routine reviews of your systems and processes to ensure
+                they are working effectively and to identify any potential issues before they become serious
+                problems.</p>
+        </div>
+        <div class="card4">
+            <h3>Preventative Measures</h3>
+            <p>We implement strategies to prevent issues from arising, helping you
+                avoid disruptions and maintain smooth business operations.</p>
+        </div>
+    </div>
+      <!--  -->
+      <header>
+        <div class="tiyle">
+            <h2>Why Choose Us</h2>
+        </div>
+    </header>
+      <!--  -->
+    <section class="mains">
+      <div class="container">
+        <div class="cards6">
+            <div class="card6">
+                <h3>Specialized Knowledge</h3>
+                <p>Our team has deep expertise in various industries, allowing us to
+                    offer support that is specifically designed to meet your sector’s requirements.</p>
+            </div>
+            <div class="card6">
+                <h3>Dependable Support</h3>
+                <p>We provide consistent and timely assistance, ensuring you get the
+                    help you need whenever you need it.</p>
+            </div>
+            <div class="card6">
+                <h3>Broad Coverage</h3>
+                <p>Our support services cover all areas of your business, from technical
+                    problems to customer interactions, ensuring comprehensive assistance.</p>
+            </div>
+            <div class="card6">
+                <h3>Preventative Focus</h3>
+                <p>We prioritize preventing issues before they arise, helping you avoid
+                    disruptions and maintain smooth operations.</p>
+            </div>
+        </div>
+    </div>  
+  </section>
+  <!--  -->
+  <section class="making">
+  <div class="contact-container">
+    <div class="contact-content">
+        <h2>Contact Us</h2>
+        <p>Are you ready to take your business to the next level with our development services? Contact us today to discuss your project and get started. Our team is excited to work with you and help you achieve your business goals. Let’s create something amazing together!</p>
+        <a href="#">Get in Touch</a>
+    </div>
+</div>
+</section>
+</body>
+<footer class="footerccc">
+  <div class="footer-containerccc">
+    <div class="footer-sectionccc">
+      <a href="/">
+        <img src="images/Tech_Tasa_Logo.webp" alt="" class="footer-logoccc">
+      </a>
+      <p>Our innovative approach ensures seamless integration and unparalleled performance, driving your business forward in the digital age.</p>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Quick Menu</h4>
+      <ul>
+        <li><a href="/aboutus.html">About</a></li>
+        <li><a href="/ourprojects.html">Work</a></li>
+        <li><a href="/services.html">Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="/blogpage.html">Blog</a></li>
+        <li><a href="/career.html">Career</a></li>
+        <li><a href="/contactus.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Subscribe to our newsletter</h4>
+      <p>Subscribe now to be updated with the latest features</p>
+      <form>
+        <div class="subscribe-container">
+          <input type="email" placeholder="Enter your Email" class="email-input">
+          <button class="subscribe-button">Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottomccc">
+    <p>&copy; 2024 TECHTASA All Rights Reserved</p>
+    <div class="social-iconsccc">
+      <a href="https://www.facebook.com/techtasa/"><img src="images/fb.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/tech.tasa/"><img src="images/IG.png" alt="Instagram"></a>
+      <a href="https://x.com/Tech_Tasa"><img src="images/tw.png" alt="Twitter"></a>
+    </div>
+  </div>
+</footer>
+</html>
