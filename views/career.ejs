@@ -88,6 +88,7 @@
               <% } %>
               <h4><%= job.title %></h4>
               <p><%= job.description %></p>
+              <a href="<%= job.document %>" target="_blank" class="apply-btn">Details</a>
               <a href="/career/apply/<%= job._id %>" class="apply-btn">Apply Now</a>
           </div>
       <% }); %>
