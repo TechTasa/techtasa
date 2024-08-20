@@ -15,6 +15,7 @@ const careerRoutes = require('./routes/careerRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const blogPageRoutes = require('./routes/blogPageRoutes');
+const testimonialRoutes = require('./routes/testimonialRoutes');
 const Blog = require('./models/Blog');
 
 
@@ -63,6 +64,7 @@ const store = new MongoDBStore({
   app.use('/dashboard/blog', blogRoutes);
   app.use('/career',careerRoutes);
   app.use('/blog', blogPageRoutes);
+  app.use('/', testimonialRoutes);
 
 
   app.get('/', async(req, res) => {
@@ -76,11 +78,11 @@ const store = new MongoDBStore({
     res.render("about",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/testimonials', (req, res) => {
-    const loggedin=req.session.user;
-    res.render("testimonials",{loggedin})
-    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
-  })
+  // app.get('/testimonials', (req, res) => {
+  //   const loggedin=req.session.user;
+  //   res.render("testimonials",{loggedin})
+  //   // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  // })
   app.get('/apps', (req, res) => {
     const loggedin=req.session.user;
     res.render("apps",{loggedin})

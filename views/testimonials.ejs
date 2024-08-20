@@ -73,38 +73,44 @@
   <h2>TESTIMONIALS</h2>
   <p>Subscribe to Easy Tutorials YouTube channel to watch more videos.</p>
   <div class="testimonial-container">
+    <% testimonials.forEach(testimonial => { %>
       <div class="testimonial">
-          <img src="images/avatar2.png" alt="Avinash Kr">
-          <p>
-              Like this video and ask your questions in the comment section. Don't forget to subscribe to Easy Tutorials YouTube channel to watch more videos on website designing, digital marketing, and Photoshop.
-          </p>
-          <h3>Avinash Kr</h3>
-          <h4>Co-Founder at XYZ</h4>
+        <img src="images/avatar2.png" alt="<%= testimonial.name %>">
+        <p><%= testimonial.message %></p>
+        <h3><%= testimonial.name %></h3>
+        <h4><%= testimonial.company %></h4>
+        <div class="rating">
+          <% for (let i = 1; i <= 5; i++) { %>
+            <% if (i <= testimonial.rating) { %>
+              <i class="fas fa-star"></i>
+            <% } else { %>
+              <i class="far fa-star"></i>
+            <% } %>
+          <% } %>
+        </div>
       </div>
-      <div class="testimonial">
-          <img src="images/avatar2.png" alt="Bharat Kunal">
-          <p>
-              Like this video and ask your questions in the comment section. Don't forget to subscribe to Easy Tutorials YouTube channel to watch more videos on website designing, digital marketing, and Photoshop.
-          </p>
-          <h3>Bharat Kunal</h3>
-          <h4>Manager at XYZ</h4>
-      </div>
-      <div class="testimonial">
-          <img src="images/avatar2.png" alt="Prabhakar D">
-          <p>
-              Like this video and ask your questions in the comment section. Don't forget to subscribe to Easy Tutorials YouTube channel to watch more videos on website designing, digital marketing, and Photoshop.
-          </p>
-          <h3>Prabhakar D</h3>
-          <h4>Founder / CEO at XYZ</h4>
-      </div>
+    <% }); %>
   </div>
   <div class="testimonial-form">
       <h3>Write Your Testimonial</h3>
-      <form>
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="text" name="position" placeholder="Your Position" required>
-          <textarea name="testimonial" placeholder="Your Testimonial" required></textarea>
-          <button type="submit">Submit</button>
+      <form action="/testimonials" method="POST">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="company">Company:</label>
+          <input type="text" id="company" name="company" required>
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div>
+          <label for="rating">Rating (1-5):</label>
+          <input type="number" id="rating" name="rating" min="1" max="5" required>
+        </div>
+        <button type="submit">Submit Testimonial</button>
       </form>
   </div>
 </div>
