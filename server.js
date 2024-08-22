@@ -16,6 +16,8 @@ const resumeRoutes = require('./routes/resumeRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const blogPageRoutes = require('./routes/blogPageRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const projectPageRoutes = require('./routes/projectPageRoutes');
 const Blog = require('./models/Blog');
 
 
@@ -62,8 +64,10 @@ const store = new MongoDBStore({
   app.use('/dashboard/jobs',jobRoutes);
   app.use('/dashboard/resume', resumeRoutes);
   app.use('/dashboard/blog', blogRoutes);
+  app.use('/dashboard/project', projectRoutes);
   app.use('/career',careerRoutes);
   app.use('/blog', blogPageRoutes);
+  app.use('/projects', projectPageRoutes);
   app.use('/', testimonialRoutes);
 
 
@@ -88,7 +92,7 @@ const store = new MongoDBStore({
     res.render("apps",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/projects', (req, res) => {
+  app.get('/projectsold', (req, res) => {
     const loggedin=req.session.user;
     res.render("projects",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));

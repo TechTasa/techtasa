@@ -92,6 +92,13 @@
               </a>
             </li>
             <% } %>
+            <% if (userType === 'admin') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard/project">
+                  <i class="bi bi-file-text"></i> Projects
+              </a>
+            </li>
+            <% } %>
             </ul>
             <!-- Divider -->
             <hr class="navbar-divider my-5 opacity-20" />

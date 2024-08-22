@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Create Blog</title>
+  <title>Create Project</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
   <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
@@ -115,6 +115,7 @@
                             </a>
                           </li>
                           <% } %>
+                          
                           <% if (userType === 'admin') { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="/dashboard/project">
@@ -149,12 +150,12 @@
             <div class="row align-items-center">
               <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                 <!-- Title -->
-                <h1 class="h2 mb-0 ls-tight">All Blogs</h1>
+                <h1 class="h2 mb-0 ls-tight">All Projects</h1>
               </div>
               <!-- Actions -->
               <div class="col-sm-6 col-12 text-sm-end">
                 <div class="mx-n1">
-                  <a href="/dashboard/blog/create" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                  <a href="/dashboard/project/create" class="btn d-inline-flex btn-sm btn-primary mx-1">
                     <span class="pe-2">
                       <i class="bi bi-plus"></i>
                     </span>
@@ -165,15 +166,7 @@
             </div>
             <!-- Nav -->
             <ul class="nav nav-tabs mt-4 overflow-x border-0">
-              <!-- <li class="nav-item ">
-                          <a href="#" class="nav-link active">All files</a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="#" class="nav-link font-regular">Shared</a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="#" class="nav-link font-regular">File requests</a>
-                      </li> -->
+              <!-- ... (keep the same nav content) ... -->
             </ul>
           </div>
         </div>
@@ -182,12 +175,14 @@
       <main class="py-6 bg-surface-secondary">
         <div class="container-fluid">
           <div class="table-responsive">
-            <form action="/dashboard/blog/create" method="post" enctype="multipart/form-data">
+            <form action="/dashboard/project/create" method="post" enctype="multipart/form-data">
               <label for="title">Title:</label>
               <input type="text" id="title" name="title" />
+              <label for="shortDescription">Short Description:</label>
+              <input type="text" id="shortDescription" name="shortDescription" />
               <label for="author">Author:</label>
               <input type="text" id="author" name="author" value="<%= userName%>" />
-              <label for="image">Image:</label>
+              <label for="image">Thumbnail:</label>
               <input type="file" id="image" name="image" onchange="previewImage()" />
               <div class="imagePreview">
                 <img id="preview" src="" alt="Preview">
@@ -229,7 +224,7 @@
           ['image', 'video']
         ],
       },
-      placeholder: "Compose an epic...",
+      placeholder: "Describe your project...",
       theme: "snow", // or 'bubble'
     });
     document.querySelector("form").addEventListener("submit", function () {
