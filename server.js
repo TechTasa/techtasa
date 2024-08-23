@@ -18,6 +18,8 @@ const blogPageRoutes = require('./routes/blogPageRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const projectPageRoutes = require('./routes/projectPageRoutes');
+const technologyRoutes = require('./routes/technologyRoutes');
+const technologyPageRoutes = require('./routes/technologyPageRoutes');
 const Blog = require('./models/Blog');
 
 
@@ -65,10 +67,12 @@ const store = new MongoDBStore({
   app.use('/dashboard/resume', resumeRoutes);
   app.use('/dashboard/blog', blogRoutes);
   app.use('/dashboard/project', projectRoutes);
+  app.use('/dashboard/technology', technologyRoutes);
   app.use('/career',careerRoutes);
   app.use('/blog', blogPageRoutes);
   app.use('/projects', projectPageRoutes);
   app.use('/', testimonialRoutes);
+  app.use('/technology', technologyPageRoutes);
 
 
   app.get('/', async(req, res) => {
@@ -97,7 +101,7 @@ const store = new MongoDBStore({
     res.render("projects",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/technology', (req, res) => {
+  app.get('/technologyold', (req, res) => {
     const loggedin=req.session.user;
     res.render("technology",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));

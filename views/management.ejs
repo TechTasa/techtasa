@@ -37,56 +37,63 @@
                 <ul class="navbar-nav">
                   <li class="nav-item">
                     <a class="nav-link" href="/dashboard/">
-                      <i class="bi bi-house"></i> Dashboard
+                      <i class="bi bi-speedometer2"></i> Dashboard
                     </a>
                   </li>
-                  <% if (userType === 'admin' || userType === 'hr') { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard/management">
-                            <i class="bi bi-people"></i> Management
-                        </a>
-                    </li>
-                <% } %>
+                  <% if (userType==='admin' || userType==='hr' ) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/management">
+                      <i class="bi bi-people"></i> Management
+                    </a>
+                  </li>
+                  <% } %>
                   <li class="nav-item">
                     <a class="nav-link" href="/dashboard/leads">
-                      <i class="bi bi-bar-chart"></i> Leads
+                      <i class="bi bi-graph-up"></i> Leads
                     </a>
                   </li>
-                  <% if (userType === 'admin' || userType === 'hr') { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard/jobs">
-                            <i class="bi bi-card-list"></i> Jobs Listing
-                        </a>
-                    </li>
-                <% } %>
-                <% if (userType === 'admin' || userType === 'hr') { %>
+                  <% if (userType==='admin' || userType==='hr' ) { %>
                   <li class="nav-item">
-                      <a class="nav-link" href="/dashboard/resume">
-                          <i class="bi bi-card-list"></i> Resumes
-                      </a>
-                  </li>
-              <% } %>
-              <% if (userType === 'admin' || userType === 'blog writer') { %>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/blog">
-                        <i class="bi bi-file-text"></i> Blog
+                    <a class="nav-link" href="/dashboard/jobs">
+                      <i class="bi bi-briefcase"></i> Jobs Listing
                     </a>
-                </li>
-            <% } %>
-            <% if (userType === 'admin' || userType === 'hr') { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/dashboard/testimonials">
-                  <i class="bi bi-file-text"></i> Testimonials
-                </a>
-              </li>
-            <% } %>
-            <% if (userType === 'admin') { %>
-              <li class="nav-item">
-                  <a class="nav-link" href="/dashboard/project">
-                      <i class="bi bi-file-text"></i> Projects
-                  </a>
-              </li>
-            <% } %>
+                  </li>
+                  <% } %>
+                  <% if (userType==='admin' || userType==='hr' ) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/resume">
+                      <i class="bi bi-file-person"></i> Resumes
+                    </a>
+                  </li>
+                  <% } %>
+                  <% if (userType==='admin' || userType==='blog writer' ) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/blog">
+                      <i class="bi bi-pencil-square"></i> Blog
+                    </a>
+                  </li>
+                  <% } %>
+                  <% if (userType === 'admin' || userType === 'hr') { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/testimonials">
+                      <i class="bi bi-chat-quote"></i> Testimonials
+                    </a>
+                  </li>
+                  <% } %>
+                  <% if (userType === 'admin') { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/project">
+                        <i class="bi bi-kanban"></i> Projects
+                    </a>
+                  </li>
+                  <% } %>
+                  <% if (userType === 'admin') { %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/dashboard/technology">
+                        <i class="bi bi-cpu"></i> Technologies
+                      </a>
+                    </li>
+                  <% } %>
                 </ul>
                 <!-- Divider -->
                 <hr class="navbar-divider my-5 opacity-20">
