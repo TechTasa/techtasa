@@ -443,7 +443,7 @@ header h1 {
           <div class="card-content">
               <h2><%= project.title %></h2>
               <p><%= project.shortDescription %></p>
-              <a href="/projects/<%= project._id %>">Read More</a>
+              <a target="_blank" href=<%= project.url %>>Read More</a>
           </div>
       </div>
   <% }); %>

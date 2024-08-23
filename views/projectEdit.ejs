@@ -173,9 +173,8 @@
               <div class="imagePreview">
                 <img id="preview" src="/<%= project.image %>" alt="Preview" />
               </div>
-              <label for="contentDelta">Content:</label>
-              <div id="editor"></div>
-              <input type="hidden" id="contentDelta" name="contentDelta" value="<%= project.contentDelta %>" />
+              <label for="url">URL:</label>
+              <input type="text" id="url" name="url" value="<%= project.url %>" />
               <input type="submit" value="Update" />
             </form>
           </div>
@@ -185,7 +184,7 @@
   </div>
 </body>
 <script src="/js/navToggle.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<!-- <script src="//cdn.quilljs.com/1.3.6/quill.js"></script> -->
 <script>
   function previewImage() {
     const preview = document.getElementById("preview");
@@ -206,28 +205,28 @@
     }
   }
 
-  var quill = new Quill("#editor", {
-    modules: {
-      toolbar: [
-        [{
-          header: [1, 2, false]
-        }],
-        ["bold", "italic", "underline"],
-        ["code-block"],
-      ],
-    },
-    placeholder: "Compose an epic...",
-    theme: "snow", // or 'bubble',
-  });
+  // var quill = new Quill("#editor", {
+  //   modules: {
+  //     toolbar: [
+  //       [{
+  //         header: [1, 2, false]
+  //       }],
+  //       ["bold", "italic", "underline"],
+  //       ["code-block"],
+  //     ],
+  //   },
+  //   placeholder: "Compose an epic...",
+  //   theme: "snow", // or 'bubble',
+  // });
 
-  let temp = JSON.parse(document.querySelector("#contentDelta").value);
-  quill.setContents(temp);
+  // let temp = JSON.parse(document.querySelector("#contentDelta").value);
+  // quill.setContents(temp);
 
-  document.querySelector("form").addEventListener("submit", function() {
-    var contentDelta = quill.getContents();
-    document.querySelector("#contentDelta").value =
-      JSON.stringify(contentDelta);
-  });
+  // document.querySelector("form").addEventListener("submit", function() {
+  //   var contentDelta = quill.getContents();
+  //   document.querySelector("#contentDelta").value =
+  //     JSON.stringify(contentDelta);
+  // });
 </script>
 
 </html>

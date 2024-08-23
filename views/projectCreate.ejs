@@ -200,9 +200,8 @@
               <div class="imagePreview">
                 <img id="preview" src="" alt="Preview">
               </div>
-              <label for="contentDelta">Content:</label>
-              <div id="editor"></div>
-              <input type="hidden" id="contentDelta" name="contentDelta" />
+              <label for="url">URL:</label>
+              <input type="text" id="url" name="url" />
               <input type="submit" value="Submit" />
             </form>
           </div>
@@ -211,7 +210,7 @@
     </div>
   </div>
   <script src="/js/navToggle.js"></script>
-  <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+  <!-- <script src="//cdn.quilljs.com/1.3.6/quill.js"></script> -->
   <script>
     function previewImage() {
       const preview = document.getElementById('preview');
@@ -228,23 +227,23 @@
       }
     }
 
-    var quill = new Quill("#editor", {
-      modules: {
-        toolbar: [
-          [{ header: [1, 2, false] }],
-          ["bold", "italic", "underline"],
-          ["code-block"],
-          ['image', 'video']
-        ],
-      },
-      placeholder: "Describe your project...",
-      theme: "snow", // or 'bubble'
-    });
-    document.querySelector("form").addEventListener("submit", function () {
-      var contentDelta = quill.getContents();
-      document.querySelector("#contentDelta").value =
-        JSON.stringify(contentDelta);
-    });
+    // var quill = new Quill("#editor", {
+    //   modules: {
+    //     toolbar: [
+    //       [{ header: [1, 2, false] }],
+    //       ["bold", "italic", "underline"],
+    //       ["code-block"],
+    //       ['image', 'video']
+    //     ],
+    //   },
+    //   placeholder: "Describe your project...",
+    //   theme: "snow", // or 'bubble'
+    // });
+    // document.querySelector("form").addEventListener("submit", function () {
+    //   var contentDelta = quill.getContents();
+    //   document.querySelector("#contentDelta").value =
+    //     JSON.stringify(contentDelta);
+    // });
   </script>
 </body>
 

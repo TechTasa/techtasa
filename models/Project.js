@@ -4,7 +4,7 @@ const projectSchema = new mongoose.Schema({
     title: String,
     image: String,
     shortDescription: String,
-    contentDelta: Object,
+    url: String,
     author: String,
     date: { type: Date, default: Date.now }
 });
