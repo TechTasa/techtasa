@@ -21,7 +21,7 @@ git clone https://github.com/TechTasa/cowork.git
 ```
 
 ```
-cd cowork
+cd techtasa
 ```
 ## Select Branch
 
