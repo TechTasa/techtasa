@@ -17,7 +17,7 @@ git config --global user.email teschtasa@gmail.com
  Open Terminal In VSCODE:
 
 ```
-git clone https://github.com/TechTasa/cowork.git
+git clone https://github.com/TechTasa/techtasa.git
 ```
 
 ```
