@@ -23,7 +23,7 @@ git clone https://github.com/TechTasa/techtasa.git
 ```
 cd techtasa
 ```
-## Select Branch (Optional)
+## Select Branch
 
 ```
 git checkout -b main
