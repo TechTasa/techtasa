@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <title>Document</title>
+</head>
+<style>
+    section {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4a90e2, #9013fe);
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.launch-page-wrapper {
+    max-width: 400px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.launch-timer {
+    margin-bottom: 20px;
+}
+
+.subscription-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subscription-box input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.subscription-box button {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+}
+
+.subscription-box button:hover {
+    background-color: #ff867c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .subscription-box input, .subscription-box button {
+        max-width: 100%;
+    }
+}
+</style>
+<body>
+    <nav>
+        <div class="wrapper7">
+          <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="/">Home</a></li>
+            <li>
+              <a href="#" class="desktop-item">Service</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Service</label>
+              <div class="mega-box">
+                <div class="content6">
+                  <div class="row">
+                    <ul class="mega-links">
+                    <li><a href="/development.html">All Types Of Development</a></li>
+                    <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                    <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                    <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                    <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <ul class="mega-links">
+                      <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                      <li><a href="/deep_researching.html">Deep Researching</a></li>
+                      <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                      <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <ul class="mega-links">
+                      <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                      <li><a href="/api.html"> Creating API & Customisation</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/clients">Clients</a></li>
+            <li><a href="/testimonials">Testimonials</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/career">Career</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/outsourcing">Outsourcing</a></li>
+            <li><a href="/readytosell">Readytosell</a></li>
+            <li><a href="https://meet.techtasa.com/">Meet</a></li>
+            <li class="navbar-nav-list-links butt"><a href="/contact" class="linkss">Contact</a></li>
+            <% if (loggedin) { %>
+              <li class="navbar-nav-list-links butt"><a href="/dashboard" class="linkss blue">Dashboard</a></li>
+              <li class="navbar-nav-list-links butt "><a href="/auth/logout" class="linkss red">Logout</a></li>
+          <% } else { %>
+            <li class="navbar-nav-list-links butt"><a href="/auth/login" class="linkss blue">Login</a></li>
+          <% } %>
+          </ul>
+          <label for="menu-btn" class="btn menu-btn navbar-menu"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <section>
+        <div class="launch-page-wrapper">
+          <h1>We're Launching Soon!</h1>
+          <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
+          <div class="launch-timer">
+              <p>Stay Tuned!</p>
+          </div>
+          <div class="subscription-box">
+              <input type="email" placeholder="Enter your email" />
+              <button>Notify Me</button>
+          </div>
+      </div>
+  </section>
+</body>
+<script src="script.js"></script>
+</html>

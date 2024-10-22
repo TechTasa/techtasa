@@ -96,14 +96,26 @@ const store = new MongoDBStore({
     res.render("apps",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/projectsold', (req, res) => {
+  app.get('/clients', (req, res) => {
     const loggedin=req.session.user;
-    res.render("projects",{loggedin})
+    res.render("clients",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/technologyold', (req, res) => {
+  app.get('/courses', (req, res) => {
     const loggedin=req.session.user;
-    res.render("technology",{loggedin})
+    res.render("courses",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+
+  app.get('/outsourcing', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("outsourcing",{loggedin})
+    // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
+  })
+
+  app.get('/readytosell', (req, res) => {
+    const loggedin=req.session.user;
+    res.render("readytosell",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
 
