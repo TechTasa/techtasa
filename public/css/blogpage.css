@@ -24,13 +24,24 @@ body {
 .navbar h3 {
     margin: 0;
 }
-
+/* 
 .main-content {
     display: flex;
     justify-content: center;
     padding: 7rem;
+} */
+.main-content {
+    padding: 2rem;
+    display: block; 
 }
 
+@media (min-width: 768px) {
+    .main-content {
+        padding: 5rem;
+        display: flex;
+        justify-content: center;
+    }
+}
 .blogs-container {
     width: 70%;
     display: flex;
