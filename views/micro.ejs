@@ -7,32 +7,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>rupeexpert</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="../css/services.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 </head>
 
 <body>
-  <nav class="navbar">
-    <div id="menu"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1b1dc7" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <line x1="4" y1="6" x2="20" y2="6" />
-        <line x1="4" y1="12" x2="20" y2="12" />
-        <line x1="4" y1="18" x2="20" y2="18" />
-      </svg></div>
-    <a href="/" class="logo"><img src="../images/XpertRupees_Logo.svg" alt=""></a>
-    <ul class="links">
-      <li class=" link "><a href="/">Home</a></li>
-      <li class=" link active"><a href="/services">Services</a></li>
-      <li class=" link "><a href="/career">Career</a></li>
-      <li class=" link "><a href="/blog">Blog</a></li>
-      <li class=" link"><a href="/contact">Contact</a></li>
-    </ul>
-    <% if (loggedin) { %>
-    <button class="cta" onClick='location="/dashboard"'>Dashboard</button>
-    <% } else { %>
-    <button class="cta" onClick='location="/auth/login"'>Sign In</button>
-    <% } %>
+  <nav>
+    <div class="wrapper7">
+      <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#" class="desktop-item">Service</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">Service</label>
+          <div class="mega-box">
+            <div class="content6">
+              <div class="row">
+                <ul class="mega-links">
+                <li><a href="/development.html">All Types Of Development</a></li>
+                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                  <li><a href="/deep_researching.html">Deep Researching</a></li>
+                  <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                  <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                  <li><a href="/api.html"> Creating API & Customisation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/technology">Courses</a></li>
+        <li><a href="/projects">Clients</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/career">Career</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/outsourcing">Outsourcing</a></li>
+        <li><a href="/readytosell">Readytosell</a></li>
+        <li><a href="https://meet.techtasa.com/">Meet</a></li>
+        <li class="navbar-nav-list-links butt"><a href="/contact" class="linkss">Contact</a></li>
+        <% if (loggedin) { %>
+          <li class="navbar-nav-list-links butt"><a href="/dashboard" class="linkss blue">Dashboard</a></li>
+          <li class="navbar-nav-list-links butt "><a href="/auth/logout" class="linkss red">Logout</a></li>
+      <% } else { %>
+        <li class="navbar-nav-list-links butt"><a href="/auth/login" class="linkss blue">Login</a></li>
+      <% } %>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn navbar-menu"><i class="fas fa-bars"></i></label>
+    </div>
   </nav>
   <div class="services">
     <div class="container p-5" style="background:linear-gradient(to left, #0561CA,#00278C);">
@@ -289,6 +329,7 @@
   </section>
 </body>
 <script src="../js/script.js"></script>
+<script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>

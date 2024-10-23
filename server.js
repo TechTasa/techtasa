@@ -96,14 +96,14 @@ const store = new MongoDBStore({
     res.render("apps",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/clients', (req, res) => {
+  app.get('/projectsold', (req, res) => {
     const loggedin=req.session.user;
-    res.render("clients",{loggedin})
+    res.render("projects",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
-  app.get('/courses', (req, res) => {
+  app.get('/technologyold', (req, res) => {
     const loggedin=req.session.user;
-    res.render("courses",{loggedin})
+    res.render("technology",{loggedin})
     // res.sendFile(path.join(__dirname, 'public','html', 'services.html'));
   })
 
