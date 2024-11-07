@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
     <title>Document</title>
 </head>
 <style>
-    section {
+    /* section {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #4a90e2, #9013fe);
     color: #fff;
@@ -72,7 +74,6 @@ p {
     background-color: #ff867c;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     h1 {
         font-size: 2em;
@@ -85,7 +86,154 @@ p {
     .subscription-box input, .subscription-box button {
         max-width: 100%;
     }
-}
+} */
+  /* Section Styles */
+  section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* Benefits Section */
+    .benefit-cards {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Services Section */
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .service {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      flex: 1;
+      position: relative;
+    }
+
+    .more-content {
+      display: none;
+      margin-top: 0.5rem;
+      color: #666;
+    }
+
+    .read-more-btn {
+      background: #2d89ef;
+      color: #fff;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Statistics Section */
+    .stats-container {
+      display: flex;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .stat {
+      flex: 1;
+      font-size: 1.5rem;
+    }
+
+    .count {
+      font-size: 3rem;
+      color: #2d89ef;
+    }
+
+    /* Contact Section */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea, button {
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      background: #2d89ef;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header nav ul li {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      .benefit-cards, .services-list, .stats-container {
+        flex-direction: column;
+      }
+
+      .card, .service, .stat {
+        margin: 0.5rem 0;
+      }
+
+      .count {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 1.5rem;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header nav ul {
+        margin-top: 0.5rem;
+      }
+
+      header nav ul li {
+        margin: 0.25rem 0;
+      }
+
+      .read-more-btn, button {
+        padding: 0.5rem;
+      }
+
+      .count {
+        font-size: 2rem;
+      }
+    }
 </style>
 <body>
   <nav>
@@ -148,7 +296,7 @@ p {
       <label for="menu-btn" class="btn menu-btn navbar-menu"><i class="fas fa-bars"></i></label>
     </div>
   </nav>
-      <section>
+      <!-- <section>
         <div class="launch-page-wrapper">
           <h1>We're Launching Soon!</h1>
           <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
@@ -160,7 +308,186 @@ p {
               <button>Notify Me</button>
           </div>
       </div>
-  </section>
+  </section> -->
+ <!-- Header Section -->
+ <header id="header" style="text-align: center; margin-top: 2rem;">
+  <h1>Outsourcing Solutions</h1>
+  <p>Your Partner for Success</p>
+</header>
+
+<!-- Benefits Section -->
+<section id="benefits">
+  <h2>Why Outsource?</h2>
+  <p>Outsourcing offers a variety of benefits to help businesses grow efficiently and cost-effectively.</p>
+  <div class="benefit-cards">
+    <div class="card">
+      <h3>Cost Savings</h3>
+      <p>Significant reduction in operational costs by outsourcing to specialized vendors.</p>
+    </div>
+    <div class="card">
+      <h3>Expertise</h3>
+      <p>Access to a global talent pool with specialized skills and experience.</p>
+    </div>
+    <div class="card">
+      <h3>Scalability</h3>
+      <p>Scale up or down easily based on business needs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <h2>Our Services</h2>
+  <p>We offer a range of services tailored to meet the unique needs of each business.</p>
+  <div class="services-list">
+    <div class="service">
+      <h3>IT Support</h3>
+      <p>End-to-end IT solutions, including development and infrastructure management.</p>
+      <button class="read-more-btn">Read More</button>
+      <p class="more-content">Our IT services ensure that your tech infrastructure remains agile, secure, and scalable.</p>
+    </div>
+    <div class="service">
+      <h3>Customer Support</h3>
+      <p>24/7 customer support solutions across multiple channels.</p>
+      <button class="read-more-btn">Read More</button>
+      <p class="more-content">We provide multilingual, round-the-clock support to ensure customer satisfaction.</p>
+    </div>
+    <div class="service">
+      <h3>Back Office</h3>
+      <p>Efficient handling of data entry, payroll, and other back-office tasks.</p>
+      <button class="read-more-btn">Read More</button>
+      <p class="more-content">Focus on your core business while we handle your administrative tasks efficiently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics Section -->
+<section id="statistics">
+  <h2>Outsourcing Statistics</h2>
+  <div class="stats-container">
+    <div class="stat">
+      <span class="count" data-count="85">0</span>%
+      <p>Companies Outsource</p>
+    </div>
+    <div class="stat">
+      <span class="count" data-count="70">0</span>%
+      <p>Cost Reduction</p>
+    </div>
+    <div class="stat">
+      <span class="count" data-count="92">0</span>%
+      <p>Customer Satisfaction</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Ready to take your business to the next level? Contact us for more information.</p>
+  <form id="contactForm">
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message"></textarea>
+    
+    <!-- File Upload for Images -->
+    <label for="imageUpload">Upload Image:</label>
+    <input type="file" id="imageUpload" accept="image/*">
+    
+    <!-- File Upload for Videos -->
+    <label for="videoUpload">Upload Video:</label>
+    <input type="file" id="videoUpload" accept="video/*">
+    
+    <!-- File Upload for Other Files -->
+    <label for="fileUpload">Upload Other Files:</label>
+    <input type="file" id="fileUpload" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt">
+    
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 </body>
+<footer class="footerccc">
+  <div class="footer-containerccc">
+    <div class="footer-sectionccc">
+      <a href="/">
+        <img src="images/Tech_Tasa_Logo.webp" alt="" class="footer-logoccc">
+      </a>
+      <p>Our innovative approach ensures seamless integration and unparalleled performance, driving your business forward in the digital age.</p>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Quick Menu</h4>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Work</a></li>
+        <li><a href="/services.html">Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="/blog">Blog</a></li>
+       <li><a href="/career">Career</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-sectionccc">
+      <h4>Subscribe to our newsletter</h4>
+      <p>Subscribe now to be updated with the latest features</p>
+      <form>
+        <div class="subscribe-container">
+          <input type="email" placeholder="Enter your Email" class="email-input">
+          <button class="subscribe-button">Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottomccc">
+    <p>&copy; 2024 TECHTASA All Rights Reserved</p>
+    <div class="social-iconsccc">
+      <a href="https://www.facebook.com/techtasa/"><img src="images/fb.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/tech.tasa/"><img src="images/IG.png" alt="Instagram"></a>
+      <a href="https://x.com/Tech_Tasa"><img src="images/tw.png" alt="Twitter"></a>
+    </div>
+  </div>
+</footer>
 <script src="script.js"></script>
+ <!-- JavaScript -->
+ <script>
+  // Smooth Scroll for navigation
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Animated Counters for Statistics
+  const counters = document.querySelectorAll('.count');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-count');
+      const count = +counter.innerText;
+      const increment = target / 100;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 30);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    updateCount();
+  });
+
+  // Read More Toggle for Services
+  const readMoreButtons = document.querySelectorAll('.read-more-btn');
+  readMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const moreContent = button.nextElementSibling;
+      moreContent.style.display = moreContent.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+</script>
 </html>
