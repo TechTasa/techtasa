@@ -7,8 +7,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/footer.css">
-
-    <title>Document</title>
+    <title>Out Sourcing</title>
+    <style>
+      .OutSourcingCards {
+      padding: 20px; /* Add some padding for better presentation */
+    }
+    
+    .container {
+      max-width: 1000px; /* Set a maximum width for responsiveness */
+      margin: 0 auto; /* Center the container horizontally */
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 20px; /* Add some space after the heading */
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible column layout */
+      grid-gap: 20px; /* Add spacing between cards */
+    }
+    
+    .card {
+      background-color: #fff; /* Set card background color */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+      border-radius: 5px; /* Add rounded corners */
+      padding: 20px; /* Add padding inside the cards */
+      text-align: center; /* Center content within cards */
+    }
+    
+    .card img {
+      max-width: 100%; /* Ensure images fit within the card width */
+      margin-bottom: 10px; /* Add spacing below the image */
+    }
+    
+    .card h3 {
+      font-size: 18px; /* Adjust heading size as needed */
+      margin-bottom: 5px; /* Add spacing below the heading */
+    }
+    
+    .card p {
+      line-height: 1.5; /* Improve readability by adjusting line spacing */
+      margin-bottom: 10px; /* Add spacing below the paragraph */
+    }
+    
+    .card a {
+      color: #007bff; /* Set link color */
+      text-decoration: none; /* Remove underline initially */
+    }
+    
+    .card a:hover {
+      text-decoration: underline; /* Add underline on hover */
+    }
+    </style>
+    
 </head>
 <style>
     /* section {
@@ -245,7 +298,7 @@ p {
         <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
         <li><a href="/">Home</a></li>
         <li>
-          <a href="#" class="desktop-item">Service</a>
+          <a href="#" class="desktop-item" id="abc">Service</a>
           <input type="checkbox" id="showMega">
           <label for="showMega" class="mobile-item">Service</label>
           <div class="mega-box">
@@ -315,6 +368,34 @@ p {
   <p>Your Partner for Success</p>
 </header>
 
+<!-- Outsourcing Section -->
+
+<section class="OutSourcingCards">
+  <div class="container">
+    <h1>Outsourcing Services</h1>
+    <% 
+      // Group outsourcing services by type
+      const groupedOutsourcing = outsourcing.reduce((acc, service) => {
+        acc[service.type] = acc[service.type] || [];
+        acc[service.type].push(service);
+        return acc;
+      }, {}); 
+    %>
+    <% Object.keys(groupedOutsourcing).forEach(type => { %>
+      <h2><%= type %> Services</h2>
+      <div class="grid">
+        <% groupedOutsourcing[type].forEach(function(service) { %>
+          <div class="card">
+            <img src="/<%= service.image %>" alt="<%= service.name %>">
+            <h3><%= service.name %></h3>
+            <p><%= service.shortDescription %> <a href="/outsourcing/<%= service._id %>">Read More</a></p>
+          </div>
+        <% }); %>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
 <!-- Benefits Section -->
 <section id="benefits">
   <h2>Why Outsource?</h2>
@@ -380,30 +461,32 @@ p {
   </div>
 </section>
 
+
 <!-- Contact Section -->
-<section id="contact">
+
+
+<!-- <section id="contact">
   <h2>Contact Us</h2>
   <p>Ready to take your business to the next level? Contact us for more information.</p>
   <form id="contactForm">
     <input type="text" placeholder="Name" required>
     <input type="email" placeholder="Email" required>
     <textarea placeholder="Message"></textarea>
-    
-    <!-- File Upload for Images -->
+
     <label for="imageUpload">Upload Image:</label>
     <input type="file" id="imageUpload" accept="image/*">
     
-    <!-- File Upload for Videos -->
+    
     <label for="videoUpload">Upload Video:</label>
     <input type="file" id="videoUpload" accept="video/*">
     
-    <!-- File Upload for Other Files -->
+ 
     <label for="fileUpload">Upload Other Files:</label>
     <input type="file" id="fileUpload" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt">
     
     <button type="submit">Send Message</button>
   </form>
-</section>
+</section> -->
 </body>
 <footer class="footerccc">
   <div class="footer-containerccc">
@@ -453,14 +536,14 @@ p {
  <!-- JavaScript -->
  <script>
   // Smooth Scroll for navigation
-  document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+  // document.querySelectorAll('nav a').forEach(anchor => {
+  //   anchor.addEventListener('click', function (e) {
+  //     e.preventDefault();
+  //     document.querySelector(this.getAttribute('href')).scrollIntoView({
+  //       behavior: 'smooth'
+  //     });
+  //   });
+  // });
 
   // Animated Counters for Statistics
   const counters = document.querySelectorAll('.count');

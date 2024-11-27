@@ -43,8 +43,8 @@ let ServiceLinks = document.getElementsByClassName(
   "navbar-nav-list-links-services"
 )[0];
 
-console.log("here");
-servicebtn.addEventListener("click", () => {
+// console.log("here");
+document.getElementById("abc").addEventListener("click", () => {
 
   ServiceLinks.classList.toggle("active");
   arrowdwn.classList.toggle("active")
@@ -54,10 +54,10 @@ servicebtn.addEventListener("click", () => {
 
 
 const storybtn = document.querySelectorAll('.story-contents-title');
-console.log(storybtn);
+// console.log(storybtn);
 storybtn.forEach(item => {
   item.addEventListener('click', () => {
-    console.log(item);
+    // console.log(item);
     item.classList.toggle("active")
     item.closest('.story-contents').querySelector('.story-contents-discription').classList.toggle("active");
     // item.nextElementSibling.classList.toggle("active")
@@ -106,10 +106,10 @@ meetingbtn.forEach(element => {
 });
 
 
-closeForm.addEventListener("click", () => {
-  event.preventDefault();
-  salesMeeting.classList.remove("active")
-});
+// closeForm.addEventListener("click", () => {
+//   event.preventDefault();
+//   salesMeeting.classList.remove("active")
+// });
 // NAVBAR  (↑)
 
 

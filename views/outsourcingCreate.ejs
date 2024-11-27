@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Create Blog</title>
+  <title>Create Outsource</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
-  <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
   <style>
     /* Webpixels CSS */
     /* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
@@ -18,11 +17,6 @@
     /* Bootstrap Icons */
     @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
-    #editor {
-      height: 375px;
-      width: 100%;
-    }
-
     form {
       display: flex;
       flex-direction: column;
@@ -30,7 +24,8 @@
     }
 
     input[type="text"],
-    input[type="password"],
+    input[type="number"],
+    textarea,
     select {
       padding: 0.5rem;
       border-radius: 0.25rem;
@@ -45,27 +40,24 @@
       color: white;
       cursor: pointer;
     }
-    #preview{
+    #preview, #instructorPreview {
         width: 40%;
-      }
-      @media only screen and (max-width: 600px) {
-        #preview{
+    }
+    @media only screen and (max-width: 600px) {
+      #preview, #instructorPreview {
         width: 100%;
       }
-  }
+    }
   </style>
 </head>
 
 <body>
   <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
-    <nav
-      class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
-      id="navbarVertical">
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
       <div class="container-fluid">
         <!-- Toggler -->
-        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse"
-          aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
@@ -136,6 +128,13 @@
                 </a>
               </li>
             <% } %>
+            <% if (userType === 'admin') { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/outsourcing">
+                    <i class="bi bi-people"></i> Out Sourcing
+                  </a>
+                </li>
+              <% } %>
           </ul>
           <!-- Divider -->
           <hr class="navbar-divider my-5 opacity-20" />
@@ -163,32 +162,9 @@
             <div class="row align-items-center">
               <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                 <!-- Title -->
-                <h1 class="h2 mb-0 ls-tight">All Blogs</h1>
-              </div>
-              <!-- Actions -->
-              <div class="col-sm-6 col-12 text-sm-end">
-                <div class="mx-n1">
-                  <a href="/dashboard/blog/create" class="btn d-inline-flex btn-sm btn-primary mx-1">
-                    <span class="pe-2">
-                      <i class="bi bi-plus"></i>
-                    </span>
-                    <span>Create</span>
-                  </a>
-                </div>
+                <h1 class="h2 mb-0 ls-tight">Create Technology</h1>
               </div>
             </div>
-            <!-- Nav -->
-            <ul class="nav nav-tabs mt-4 overflow-x border-0">
-              <!-- <li class="nav-item ">
-                          <a href="#" class="nav-link active">All files</a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="#" class="nav-link font-regular">Shared</a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="#" class="nav-link font-regular">File requests</a>
-                      </li> -->
-            </ul>
           </div>
         </div>
       </header>
@@ -196,62 +172,90 @@
       <main class="py-6 bg-surface-secondary">
         <div class="container-fluid">
           <div class="table-responsive">
-            <form action="/dashboard/blog/create" method="post" enctype="multipart/form-data">
-              <label for="title">Title:</label>
-              <input type="text" id="title" name="title" />
-              <label for="author">Author:</label>
-              <input type="text" id="author" name="author" value="<%= userName%>" />
-              <label for="image">Image:</label>
-              <input type="file" id="image" name="image" onchange="previewImage()" />
-              <div class="imagePreview">
-                <img id="preview" src="" alt="Preview">
-              </div>
-              <label for="contentDelta">Content:</label>
-              <div id="editor"></div>
-              <input type="hidden" id="contentDelta" name="contentDelta" />
-              <input type="submit" value="Submit" />
-            </form>
+            <form action="/dashboard/outsourcing/create" method="post" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+  
+                <label for="shortDescription">Short Description:</label>
+                <textarea id="shortDescription" name="shortDescription" required></textarea>
+  
+                <label for="heroTitle">Hero Title:</label>
+                <input type="text" id="heroTitle" name="heroTitle" required />
+  
+                <label for="heroDescription">Hero Description:</label>
+                <textarea id="heroDescription" name="heroDescription" required></textarea>
+  
+                <label for="image">Thumbnail:</label>
+                <input type="file" id="image" name="image" onchange="previewImage('image', 'preview')" />
+                <div class="imagePreview">
+                  <img id="preview" src="" alt="Thumbnail Preview" style="width: 300px; height: 300px; object-fit: contain;">
+                </div>
+  
+                <h3>Course Info</h3>
+                <label for="whatYoullLearn">What You'll Learn (comma-separated):</label>
+                <textarea id="whatYoullLearn" name="whatYoullLearn" required></textarea>
+  
+                <label for="duration">Duration:</label>
+                <input type="text" id="duration" name="duration" required />
+  
+                <label for="format">Format:</label>
+                <input type="text" id="format" name="format" required />
+  
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required />
+  
+                <label for="certification">Certification:</label>
+                <input type="checkbox" id="certification" name="certification"  />
+  
+                <label for="benefits">Benefits (comma-separated):</label>
+                <textarea id="benefits" name="benefits" required></textarea>
+  
+                <h3>Instructor</h3>
+                <label for="instructorName">Name:</label>
+                <input type="text" id="instructorName" name="instructorName" required />
+  
+                <label for="instructorImage">Image:</label>
+                <input type="file" id="instructorImage" name="instructorImage" onchange="previewImage('instructorImage', 'instructorPreview')" />
+                <div class="imagePreview">
+                  <img id="instructorPreview" src="" alt="Instructor Image Preview" style="width: 300px; height: 300px; object-fit: contain;">
+                </div>
+  
+                <label for="instructorBio">Bio:</label>
+                <textarea id="instructorBio" name="instructorBio" required></textarea>
+                
+                <label for="type">Type:</label>
+                <select id="type" name="type" required>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="Database">Database</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="E-commerce">E-commerce</option>
+                </select>
+  
+                <input type="submit" value="Create Outsource" />
+              </form>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
-  </div>
-  <script src="/js/navToggle.js"></script>
-  <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-  <script>
-    function previewImage() {
-      const preview = document.getElementById('preview');
-      const file = document.getElementById('image').files[0];
-      const reader = new FileReader();
-
-      reader.addEventListener("load", function () {
-        // convert image file to base64 string
-        preview.src = reader.result;
-      }, false);
-
-      if (file) {
-        reader.readAsDataURL(file);
+    <script src="/js/navToggle.js"></script>
+    <script>
+      function previewImage(inputId, previewId) {
+        const preview = document.getElementById(previewId);
+        const file = document.getElementById(inputId).files[0];
+        const reader = new FileReader();
+  
+        reader.addEventListener("load", function () {
+          // convert image file to base64 string
+          preview.src = reader.result;
+        }, false);
+  
+        if (file) {
+          reader.readAsDataURL(file);
+        }
       }
-    }
-
-    var quill = new Quill("#editor", {
-      modules: {
-        toolbar: [
-          [{ header: [1, 2, false] }],
-          ["bold", "italic", "underline"],
-          ["code-block"],
-          ['image', 'video']
-        ],
-      },
-      placeholder: "Compose an epic...",
-      theme: "snow", // or 'bubble'
-    });
-    document.querySelector("form").addEventListener("submit", function () {
-      var contentDelta = quill.getContents();
-      document.querySelector("#contentDelta").value =
-        JSON.stringify(contentDelta);
-    });
-  </script>
+    </script>
 </body>
 
 </html>

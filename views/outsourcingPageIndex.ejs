@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Technologies</title>
+    <link rel="stylesheet" href="/css/technology.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<body>
+  <nav>
+    <div class="wrapper7">
+      <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#" class="desktop-item">Service</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">Service</label>
+          <div class="mega-box">
+            <div class="content6">
+              <div class="row">
+                <ul class="mega-links">
+                <li><a href="/development.html">All Types Of Development</a></li>
+                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                  <li><a href="/deep_researching.html">Deep Researching</a></li>
+                  <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                  <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <ul class="mega-links">
+                  <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                  <li><a href="/api.html"> Creating API & Customisation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/technology">Courses</a></li>
+        <li><a href="/projects">Clients</a></li>
+        <li><a href="/testimonials">Testimonials</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/career">Career</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/outsourcing">Outsourcing</a></li>
+        <li><a href="/readytosell">Readytosell</a></li>
+        <li><a href="https://meet.techtasa.com/">Meet</a></li>
+        <li class="navbar-nav-list-links butt"><a href="/contact" class="linkss">Contact</a></li>
+        <% if (loggedin) { %>
+          <li class="navbar-nav-list-links butt"><a href="/dashboard" class="linkss blue">Dashboard</a></li>
+          <li class="navbar-nav-list-links butt "><a href="/auth/logout" class="linkss red">Logout</a></li>
+      <% } else { %>
+        <li class="navbar-nav-list-links butt"><a href="/auth/login" class="linkss blue">Login</a></li>
+      <% } %>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn navbar-menu"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+
+  <section class="body1">
+    <div class="container2">
+      <h1>Technologies</h1>
+      
+      <% 
+      // Group technologies by type
+      const groupedTechnologies = technologies.reduce((acc, technology) => {
+          acc[technology.type] = acc[technology.type] || [];
+          acc[technology.type].push(technology);
+          return acc;
+      }, {}); 
+      %>
+
+      <% Object.keys(groupedTechnologies).forEach(type => { %>
+        <h2><%= type %> Development</h2>
+        <div class="grid">
+          <% groupedTechnologies[type].forEach(function(technology) { %>
+            <div class="card">
+              <img src="/<%= technology.image %>" alt="<%= technology.name %>">
+              <h3><%= technology.name %></h3>
+              <p><%= technology.shortDescription %> <a href="/technology/<%= technology._id %>">Read More</a></p>
+            </div>
+          <% }); %>
+        </div>
+      <% }); %>
+      
+    </div>
+  </section>
+
+  <footer class="footerccc">
+    <div class="footer-containerccc">
+      <div class="footer-sectionccc">
+        <a href="/">
+          <img src="images/Tech_Tasa_Logo.webp" alt="" class="footer-logoccc">
+        </a>
+        <p>Our innovative approach ensures seamless integration and unparalleled performance, driving your business forward in the digital age.</p>
+      </div>
+      <div class="footer-sectionccc">
+        <h4>Quick Menu</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/projects">Work</a></li>
+          <li><a href="/services.html">Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-sectionccc">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/career">Career</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-sectionccc">
+        <h4>Subscribe to our newsletter</h4>
+        <p>Subscribe now to be updated with the latest features</p>
+        <form>
+          <div class="subscribe-container">
+            <input type="email" placeholder="Enter your Email" class="email-input">
+            <button class="subscribe-button">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottomccc">
+      <p>&copy; 2024 TECHTASA All Rights Reserved</p>
+      <div class="social-iconsccc">
+        <a href="https://www.facebook.com/techtasa/"><img src="images/fb.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/tech.tasa/"><img src="images/IG.png" alt="Instagram"></a>
+        <a href="https://x.com/Tech_Tasa"><img src="images/tw.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
