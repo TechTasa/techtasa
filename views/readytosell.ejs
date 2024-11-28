@@ -313,6 +313,16 @@ p {
     <h1>Ready to Sell</h1>
 </header>
 
+<section class="container">
+  <% items.forEach(function(item) { %>
+      <div class="card">
+          <img src="/<%= item.image %>" alt="<%= item.title %>">
+          <h2><%= item.title %></h2>
+          <p><%= item.shortDescription %></p>
+          <a href="/readyToSell/<%= item._id %>">Read More</a>
+      </div>
+  <% }); %>
+</section>
 <!-- Main Content -->
 <main>
     <h2 class="section-title">Why Sell with Us?</h2>
@@ -353,7 +363,7 @@ p {
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact">
+    <!-- <section id="contact">
         <h2 class="section-title">Contact Us to Get Started</h2>
         <form id="contactForm">
             <label for="name">Name:</label>
@@ -367,7 +377,7 @@ p {
             
             <button type="submit">Submit</button>
         </form>
-    </section>
+    </section> -->
 </main>
 
 </body>

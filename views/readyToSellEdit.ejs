@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Project</title>
+  <title>Edit ReadyToSell</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
   <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
@@ -175,91 +175,72 @@
       <main class="py-6 bg-surface-secondary">
         <div class="container-fluid">
           <div class="table-responsive">
-            <form action="/dashboard/technology/<%= technology._id %>/edit" method="post" enctype="multipart/form-data">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" value="<%= technology.name %>" required />
-
-              <label for="shortDescription">Short Description:</label>
-              <textarea id="shortDescription" name="shortDescription" required><%= technology.shortDescription %></textarea>
-
-              <label for="heroTitle">Hero Title:</label>
-              <input type="text" id="heroTitle" name="heroTitle" value="<%= technology.heroTitle %>" required />
-
-              <label for="heroDescription">Hero Description:</label>
-              <textarea id="heroDescription" name="heroDescription" required><%= technology.heroDescription %></textarea>
-
+            <form action="/dashboard/readyToSell/edit/<%= item._id %>" method="post" enctype="multipart/form-data">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" value="<%= item.title %>" />
+              <label for="shortDescription">Short Description:</label>  
+              <input type="text" id="shortDescription" name="shortDescription" value="<%= item.shortDescription %>" />
+              <label for="author">Author:</label>
+              <input type="text" id="author" name="author" value="<%= item.author %>" />
               <label for="image">Thumbnail:</label>
-              <input type="file" id="image" name="image" onchange="previewImage('image', 'preview')" />
+              <input type="file" id="image" name="image" onchange="previewImage()" />
               <div class="imagePreview">
-                <img id="preview" src="/<%= technology.image %>" alt="Thumbnail Preview" style="width: 300px; height: 300px; object-fit: contain;">
-
+                <img id="preview" src="/<%= item.image %>" alt="Preview" />
               </div>
-
-              <h3>Course Info</h3>
-              <label for="whatYoullLearn">What You'll Learn (comma-separated):</label>
-              <textarea id="whatYoullLearn" name="whatYoullLearn" required><%= technology.courseInfo.whatYoullLearn.join(', ') %></textarea>
-
-              <label for="duration">Duration:</label>
-              <input type="text" id="duration" name="duration" value="<%= technology.courseInfo.duration %>" required />
-
-              <label for="format">Format:</label>
-              <input type="text" id="format" name="format" value="<%= technology.courseInfo.format %>" required />
-
-              <label for="price">Price:</label>
-              <input type="number" id="price" name="price" value="<%= technology.courseInfo.price %>" required />
-
-              <label for="certification">Certification:</label>
-              <input type="checkbox" id="certification" name="certification" <% if (technology.courseInfo.certification) { %>checked<% } %> />
-
-              <label for="benefits">Benefits (comma-separated):</label>
-              <textarea id="benefits" name="benefits" required><%= technology.benefits.join(', ') %></textarea>
-
-              <h3>Instructor</h3>
-              <label for="instructorName">Name:</label>
-              <input type="text" id="instructorName" name="instructorName" value="<%= technology.instructor.name %>" required />
-
-              <label for="instructorImage">Image:</label>
-              <input type="file" id="instructorImage" name="instructorImage" onchange="previewImage('instructorImage', 'instructorPreview')" />
-              <div class="imagePreview">
-                <img id="instructorPreview" src="/<%= technology.instructor.image %>" alt="Instructor Image Preview" style="width: 300px; height: 300px; object-fit: contain;">
-              </div>
-
-              <label for="instructorBio">Bio:</label>
-              <textarea id="instructorBio" name="instructorBio" required><%= technology.instructor.bio %></textarea>
-
-              <label for="type">Type:</label>
-              <select id="type" name="type" required>
-                  <option value="Frontend" <% if (technology.type === 'Frontend') { %>selected<% } %>>Frontend</option>
-                  <option value="Backend" <% if (technology.type === 'Backend') { %>selected<% } %>>Backend</option>
-                  <option value="Database" <% if (technology.type === 'Database') { %>selected<% } %>>Database</option>
-                  <option value="Mobile" <% if (technology.type === 'Mobile') { %>selected<% } %>>Mobile</option>
-                  <option value="E-commerce" <% if (technology.type === 'E-commerce') { %>selected<% } %>>E-commerce</option>
-              </select>
-
-              <input type="submit" value="Update Technology" />
+              <label for="url">URL:</label>
+              <input type="text" id="url" name="url" value="<%= item.url %>" />
+              <input type="submit" value="Update" />
             </form>
           </div>
         </div>
       </main>
     </div>
   </div>
-  <script src="/js/navToggle.js"></script>
-  <script>
-    function previewImage(inputId, previewId) {
-      const preview = document.getElementById(previewId);
-      const file = document.getElementById(inputId).files[0];
-      const reader = new FileReader();
+</body>
+<script src="/js/navToggle.js"></script>
+<!-- <script src="//cdn.quilljs.com/1.3.6/quill.js"></script> -->
+<script>
+  function previewImage() {
+    const preview = document.getElementById("preview");
+    const file = document.getElementById("image").files[0];
+    const reader = new FileReader();
 
-      reader.addEventListener("load", function () {
+    reader.addEventListener(
+      "load",
+      function() {
         // convert image file to base64 string
         preview.src = reader.result;
-      }, false);
+      },
+      false
+    );
 
-      if (file) {
-        reader.readAsDataURL(file);
-      }
+    if (file) {
+      reader.readAsDataURL(file);
     }
-  </script>  
-  </body>
+  }
+
+  // var quill = new Quill("#editor", {
+  //   modules: {
+  //     toolbar: [
+  //       [{
+  //         header: [1, 2, false]
+  //       }],
+  //       ["bold", "italic", "underline"],
+  //       ["code-block"],
+  //     ],
+  //   },
+  //   placeholder: "Compose an epic...",
+  //   theme: "snow", // or 'bubble',
+  // });
+
+  // let temp = JSON.parse(document.querySelector("#contentDelta").value);
+  // quill.setContents(temp);
+
+  // document.querySelector("form").addEventListener("submit", function() {
+  //   var contentDelta = quill.getContents();
+  //   document.querySelector("#contentDelta").value =
+  //     JSON.stringify(contentDelta);
+  // });
+</script>
 
 </html>

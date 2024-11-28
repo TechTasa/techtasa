@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Project</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
   <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
@@ -45,26 +45,27 @@
       color: white;
       cursor: pointer;
     }
-
-    #preview {
-      width: 40%;
-    }
-
-    @media only screen and (max-width: 600px) {
-      #preview {
+    #preview{
+        width: 40%;
+      }
+      @media only screen and (max-width: 600px) {
+        #preview{
         width: 100%;
       }
-    }
+  }
   </style>
 </head>
 
 <body>
   <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
-    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+    <nav
+      class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+      id="navbarVertical">
       <div class="container-fluid">
         <!-- Toggler -->
-        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse"
+          aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
@@ -170,73 +171,52 @@
 
     <div class="h-screen flex-grow-1 overflow-y-lg-auto">
       <!-- Header -->
-
+      <header class="bg-surface-primary border-bottom pt-6">
+        <div class="container-fluid">
+          <div class="mb-npx">
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                <!-- Title -->
+                <h1 class="h2 mb-0 ls-tight">Create ReadyToSell</h1>
+              </div>
+              <!-- Actions -->
+              <div class="col-sm-6 col-12 text-sm-end">
+                <div class="mx-n1">
+                  <a href="/dashboard/readyToSell/create" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                    <span class="pe-2">
+                      <i class="bi bi-plus"></i>
+                    </span>
+                    <span>Create</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Nav -->
+            <ul class="nav nav-tabs mt-4 overflow-x border-0">
+              <!-- ... (keep the same nav content) ... -->
+            </ul>
+          </div>
+        </div>
+      </header>
       <!-- Main -->
       <main class="py-6 bg-surface-secondary">
         <div class="container-fluid">
           <div class="table-responsive">
-            <form action="/dashboard/technology/<%= technology._id %>/edit" method="post" enctype="multipart/form-data">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" value="<%= technology.name %>" required />
-
+            <form action="/dashboard/readyToSell/create" method="post" enctype="multipart/form-data">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" />
               <label for="shortDescription">Short Description:</label>
-              <textarea id="shortDescription" name="shortDescription" required><%= technology.shortDescription %></textarea>
-
-              <label for="heroTitle">Hero Title:</label>
-              <input type="text" id="heroTitle" name="heroTitle" value="<%= technology.heroTitle %>" required />
-
-              <label for="heroDescription">Hero Description:</label>
-              <textarea id="heroDescription" name="heroDescription" required><%= technology.heroDescription %></textarea>
-
+              <input type="text" id="shortDescription" name="shortDescription" />
+              <label for="author">Author:</label>
+              <input type="text" id="author" name="author" value="<%= userName%>" />
               <label for="image">Thumbnail:</label>
-              <input type="file" id="image" name="image" onchange="previewImage('image', 'preview')" />
+              <input type="file" id="image" name="image" onchange="previewImage()" />
               <div class="imagePreview">
-                <img id="preview" src="/<%= technology.image %>" alt="Thumbnail Preview" style="width: 300px; height: 300px; object-fit: contain;">
-
+                <img id="preview" src="" alt="Preview">
               </div>
-
-              <h3>Course Info</h3>
-              <label for="whatYoullLearn">What You'll Learn (comma-separated):</label>
-              <textarea id="whatYoullLearn" name="whatYoullLearn" required><%= technology.courseInfo.whatYoullLearn.join(', ') %></textarea>
-
-              <label for="duration">Duration:</label>
-              <input type="text" id="duration" name="duration" value="<%= technology.courseInfo.duration %>" required />
-
-              <label for="format">Format:</label>
-              <input type="text" id="format" name="format" value="<%= technology.courseInfo.format %>" required />
-
-              <label for="price">Price:</label>
-              <input type="number" id="price" name="price" value="<%= technology.courseInfo.price %>" required />
-
-              <label for="certification">Certification:</label>
-              <input type="checkbox" id="certification" name="certification" <% if (technology.courseInfo.certification) { %>checked<% } %> />
-
-              <label for="benefits">Benefits (comma-separated):</label>
-              <textarea id="benefits" name="benefits" required><%= technology.benefits.join(', ') %></textarea>
-
-              <h3>Instructor</h3>
-              <label for="instructorName">Name:</label>
-              <input type="text" id="instructorName" name="instructorName" value="<%= technology.instructor.name %>" required />
-
-              <label for="instructorImage">Image:</label>
-              <input type="file" id="instructorImage" name="instructorImage" onchange="previewImage('instructorImage', 'instructorPreview')" />
-              <div class="imagePreview">
-                <img id="instructorPreview" src="/<%= technology.instructor.image %>" alt="Instructor Image Preview" style="width: 300px; height: 300px; object-fit: contain;">
-              </div>
-
-              <label for="instructorBio">Bio:</label>
-              <textarea id="instructorBio" name="instructorBio" required><%= technology.instructor.bio %></textarea>
-
-              <label for="type">Type:</label>
-              <select id="type" name="type" required>
-                  <option value="Frontend" <% if (technology.type === 'Frontend') { %>selected<% } %>>Frontend</option>
-                  <option value="Backend" <% if (technology.type === 'Backend') { %>selected<% } %>>Backend</option>
-                  <option value="Database" <% if (technology.type === 'Database') { %>selected<% } %>>Database</option>
-                  <option value="Mobile" <% if (technology.type === 'Mobile') { %>selected<% } %>>Mobile</option>
-                  <option value="E-commerce" <% if (technology.type === 'E-commerce') { %>selected<% } %>>E-commerce</option>
-              </select>
-
-              <input type="submit" value="Update Technology" />
+              <label for="url">URL:</label>
+              <input type="text" id="url" name="url" />
+              <input type="submit" value="Submit" />
             </form>
           </div>
         </div>
@@ -244,10 +224,11 @@
     </div>
   </div>
   <script src="/js/navToggle.js"></script>
+  <!-- <script src="//cdn.quilljs.com/1.3.6/quill.js"></script> -->
   <script>
-    function previewImage(inputId, previewId) {
-      const preview = document.getElementById(previewId);
-      const file = document.getElementById(inputId).files[0];
+    function previewImage() {
+      const preview = document.getElementById('preview');
+      const file = document.getElementById('image').files[0];
       const reader = new FileReader();
 
       reader.addEventListener("load", function () {
@@ -259,7 +240,25 @@
         reader.readAsDataURL(file);
       }
     }
-  </script>  
-  </body>
+
+    // var quill = new Quill("#editor", {
+    //   modules: {
+    //     toolbar: [
+    //       [{ header: [1, 2, false] }],
+    //       ["bold", "italic", "underline"],
+    //       ["code-block"],
+    //       ['image', 'video']
+    //     ],
+    //   },
+    //   placeholder: "Describe your project...",
+    //   theme: "snow", // or 'bubble'
+    // });
+    // document.querySelector("form").addEventListener("submit", function () {
+    //   var contentDelta = quill.getContents();
+    //   document.querySelector("#contentDelta").value =
+    //     JSON.stringify(contentDelta);
+    // });
+  </script>
+</body>
 
 </html>

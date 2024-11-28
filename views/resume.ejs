@@ -114,6 +114,13 @@
                   </a>
                 </li>
               <% } %>
+              <% if (userType === 'admin') { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard/readyToSell">
+                    <i class="bi bi-people"></i> ReadyToSell
+                  </a>
+                </li>
+              <% } %>
             </ul>
             <!-- Divider -->
             <hr class="navbar-divider my-5 opacity-20" />
@@ -177,7 +184,7 @@
               <p>Name: <%= resume.name %></p>
               <p>Email: <%= resume.email %></p>
               <p>Phone: <%= resume.phone %></p>
-              <% if (resume.job.title) { %>
+              <% if (resume.job!=null) { %>
                 <p>Job: <%= resume.job.title %></p>
               <% } %>
               <p>Date of Application: <%= resume.createdAt %></p>

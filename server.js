@@ -26,6 +26,8 @@ const technologyPageRoutes = require('./routes/technologyPageRoutes');
 const outsourcingRoutes = require('./routes/outsourcingRoutes'); // Import outsourcing routes
 const outsourcingPageRoutes = require('./routes/outsourcingPageRoutes'); // Import outsourcing page routes
 const Blog = require('./models/Blog');
+const readyToSellRoutes = require('./routes/readyToSellRoutes'); // Import ready to sell routes
+const readyToSellPageRoutes = require('./routes/readyToSellPageRoutes'); // Import ready to sell page routes
 
 const app = express();
 
@@ -69,12 +71,14 @@ app.use('/dashboard/blog', blogRoutes);
 app.use('/dashboard/project', projectRoutes);
 app.use('/dashboard/technology', technologyRoutes);
 app.use('/dashboard/outsourcing', outsourcingRoutes); // Add outsourcing routes
+app.use('/dashboard/readyToSell', readyToSellRoutes);
 app.use('/career', careerRoutes);
 app.use('/blog', blogPageRoutes);
 app.use('/projects', projectPageRoutes);
 app.use('/', testimonialRoutes);
 app.use('/technology', technologyPageRoutes);
 app.use('/outsourcing', outsourcingPageRoutes); // Add outsourcing page routes
+app.use('/readyToSell', readyToSellPageRoutes);
 
 // Home Route
 app.get('/', async (req, res) => {

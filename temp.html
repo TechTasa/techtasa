@@ -145,3 +145,28 @@
 </body>
 
 </html>
+
+
+
+
+<h1><%= item.title %></h1>
+    <img src="/<%= item.image %>" alt="<%= item.title %>">
+    <p><%= item.shortDescription %></p>
+    <a href="<%= item.url %>">Visit Link</a>
+
+
+    <title><%= item.title %> - Ready To Sell Details</title>
+
+
+
+
+    <% if (userType === 'admin') { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard/readyToSell">
+          <i class="bi bi-people"></i> ReadyToSell
+        </a>
+      </li>
+    <% } %>
+
+
+    

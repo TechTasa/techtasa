@@ -8,7 +8,7 @@ exports.getResumes = async (req, res) => {
 
 exports.getResume = async (req, res) => {
   const resume = await Resume.findById(req.params.id).populate('job');
-  const userType=req.session.user.userType
+  const userType=req.session.user.userType;
   res.render('resume', { resume: resume,userType });
 };
 
