@@ -290,65 +290,65 @@ p {
 </style>
 <body>
   <nav>
+    <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
     <div class="wrapper7">
-      <div class="logo"><a href="/"><img src="/images/Tech_Tasa_Logo.webp" alt=""></a></div>
-      <input type="radio" name="slider" id="menu-btn">
-      <input type="radio" name="slider" id="close-btn">
-      <ul class="nav-links">
-        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-        <li><a href="/">Home</a></li>
-        <li>
-          <a href="#" class="desktop-item" id="abc">Service</a>
-          <input type="checkbox" id="showMega">
-          <label for="showMega" class="mobile-item">Service</label>
-          <div class="mega-box">
-            <div class="content6">
-              <div class="row">
-                <ul class="mega-links">
-                <li><a href="/development.html">All Types Of Development</a></li>
-                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
-                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
-                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
-                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
-                </ul>
-              </div>
-              <div class="row">
-                <ul class="mega-links">
-                  <li><a href="/seo.html">Content Writing as Per Seo </a></li>
-                  <li><a href="/deep_researching.html">Deep Researching</a></li>
-                  <li><a href="/selling&rental.html">Selling And Rental</a></li>
-                  <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
-                </ul>
-              </div>
-              <div class="row">
-                <ul class="mega-links">
-                  <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
-                  <li><a href="/api.html"> Creating API & Customisation</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li><a href="/technology">Courses</a></li>
-        <li><a href="/projects">Clients</a></li>
-        <li><a href="/testimonials">Testimonials</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/career">Career</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/outsourcing">Outsourcing</a></li>
-        <li><a href="/readytosell">Readytosell</a></li>
-        <li><a href="https://meet.techtasa.com/">Meet</a></li>
-        <li class="navbar-nav-list-links butt"><a href="/contact" class="linkss">Contact</a></li>
-        <% if (loggedin) { %>
-          <li class="navbar-nav-list-links butt"><a href="/dashboard" class="linkss blue">Dashboard</a></li>
-          <li class="navbar-nav-list-links butt "><a href="/auth/logout" class="linkss red">Logout</a></li>
-      <% } else { %>
-        <li class="navbar-nav-list-links butt"><a href="/auth/login" class="linkss blue">Login</a></li>
-      <% } %>
-      </ul>
-      <label for="menu-btn" class="btn menu-btn navbar-menu"><i class="fas fa-bars"></i></label>
+        <input type="radio" name="slider" id="menu-btn">
+        <input type="radio" name="slider" id="close-btn">
+        <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="/">Home</a></li>
+            <li>
+                <a href="#" class="desktop-item">Service</a>
+                <input type="checkbox" id="showMega">
+                <label for="showMega" class="mobile-item">Service</label>
+                <div class="mega-box">
+                    <div class="content6">
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li><a href="/development.html">All Types Of Development</a></li>
+                                <li><a href="/maintenance.html">All Types Of Maintenance</a></li>
+                                <li><a href="/IT Support Services.html">All Types Of IT Support</a></li>
+                                <li><a href="/techtrainingservices.html">All Types Of Tech Trainings</a></li>
+                                <li><a href="/Graphics.html">All Types Of Graphics And UI Design</a></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li><a href="/seo.html">Content Writing as Per Seo </a></li>
+                                <li><a href="/deep_researching.html">Deep Researching</a></li>
+                                <li><a href="/selling&rental.html">Selling And Rental</a></li>
+                                <li><a href="/deep_testing.html">Deep Testing & Code Testing</a></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <ul class="mega-links">
+                                <li><a href="/Human Support.html">Human Support as Per Industry</a></li>
+                                <li><a href="/api.html"> Creating API & Customisation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="/technology">Courses</a></li>
+            <li><a href="/projects">Clients</a></li>
+            <li><a href="/testimonials">Testimonials</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/career">Career</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/outsourcing">Outsourcing</a></li>
+            <li><a href="/readytosell">Readytosell</a></li>
+            <li><a href="https://meet.techtasa.com/">Meet</a></li>
+            <li class="navbar-nav-list-links butt"><a href="/contact" class="linkss">Contact</a></li>
+            <% if (loggedin) { %>
+                <li class="navbar-nav-list-links butt"><a href="/dashboard" class="linkss blue">Dashboard</a></li>
+                <li class="navbar-nav-list-links butt "><a href="/auth/logout" class="linkss red">Logout</a></li>
+                <% } else { %>
+                    <li class="navbar-nav-list-links butt"><a href="/auth/login" class="linkss blue">Login</a></li>
+                    <% } %>
+        </ul>
+        <label for="menu-btn" class="btn menu-btn navbar-menu"><i class="fas fa-bars"></i></label>
     </div>
-  </nav>
+</nav>
       <!-- <section>
         <div class="launch-page-wrapper">
           <h1>We're Launching Soon!</h1>
@@ -386,7 +386,7 @@ p {
       <div class="grid">
         <% groupedOutsourcing[type].forEach(function(service) { %>
           <div class="card">
-            <img src="/<%= service.image %>" alt="<%= service.name %>">
+            <img src="/<%= service.thumbnail %>" alt="<%= service.name %>">
             <h3><%= service.name %></h3>
             <p><%= service.shortDescription %> <a href="/outsourcing/<%= service._id %>">Read More</a></p>
           </div>

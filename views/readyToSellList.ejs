@@ -117,7 +117,6 @@
           <!-- Divider -->
           <hr class="navbar-divider my-5 opacity-20">
           <!-- Navigation -->
-
           <!-- Push content down -->
           <div class="mt-auto"></div>
           <!-- User (md) -->
@@ -169,35 +168,74 @@
             <table class="table table-hover table-nowrap">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">Title</th>
-                  <th scope="col">Author</th>
-                  <th scope="col">Short Description</th>
-                  <th scope="col">Thumbnail</th>
-                  <th colspan="2" scope="col">Actions</th>
+                  <th scope="col">Project Details</th>
+                  <th scope="col">Media</th>
+                  <th scope="col">Info</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <% items.forEach(function(item) { %>
                 <tr>
                   <td>
-                    <span class="text-heading font-semibold">
-                      <%= item.title %>
-                    </span>
+                    <div class="d-flex align-items-center">
+                      <img src="/<%= item.thumbnail %>" alt="Thumbnail" class="me-3 rounded-2" style="width: 80px; height: 80px; object-fit: cover;">
+                      <div>
+                        <div class="text-heading font-semibold mb-1">
+                          <%= item.title %>
+                        </div>
+                        <div class="text-muted small">
+                          <%= item.shortDescription.substring(0, 100) %>...
+                        </div>
+                        <div class="small text-muted">
+                          <i class="bi bi-calendar me-1"></i>
+                          <%= new Date(item.date).toLocaleDateString() %>
+                        </div>
+                      </div>
+                    </div>
                   </td>
                   <td>
-                    <%= item.author %>
+                    <div class="small">
+                      <div class="mb-1">
+                        <i class="bi bi-images text-primary me-1"></i>
+                        <%= item.images ? item.images.length : 0 %> Images
+                      </div>
+                      <div class="mb-1">
+                        <i class="bi bi-camera-video text-success me-1"></i>
+                        <%= item.videos ? item.videos.length : 0 %> Videos
+                      </div>
+                      <div>
+                        <i class="bi bi-file-earmark text-info me-1"></i>
+                        <%= item.documents ? item.documents.length : 0 %> Documents
+                      </div>
+                    </div>
                   </td>
                   <td>
-                    <%= item.shortDescription %>
+                    <div class="small">
+                      <div class="mb-1">
+                        <i class="bi bi-person text-primary me-1"></i>
+                        <%= item.author %>
+                      </div>
+                      <% if (item.url) { %>
+                        <div>
+                          <i class="bi bi-link-45deg text-success me-1"></i>
+                          <a href="<%= item.url %>" target="_blank" class="text-decoration-none">View Project</a>
+                        </div>
+                      <% } %>
+                    </div>
                   </td>
-                  <td>
-                    <img src="/<%= item.image %>" alt="Thumbnail" class="img-fluid" style="max-width: 100px; max-height: 100px; object-fit: cover;">
-                  </td>
-                  <td>
-                    <a href="/dashboard/readyToSell/edit/<%= item._id %>" class="btn btn-sm btn-neutral">Edit</a>
-                  </td>
-                  <td>
-                    <a href="/dashboard/readyToSell/delete/<%= item._id %>" onclick="return confirm('Are you sure you want to delete this Project?');" class="btn btn-sm btn-neutral"><i class="bi bi-trash"></i></a>
+                  <td class="text-end">
+                    <a href="/readyToSell/<%= item._id %>" class="btn btn-sm btn-neutral">
+                      <i class="bi bi-eye me-1"></i>View
+                    </a>
+                    <a href="/dashboard/readyToSell/edit/<%= item._id %>" class="btn btn-sm btn-neutral">
+                      <i class="bi bi-pencil me-1"></i>Edit
+                    </a>
+                    <form action="/dashboard/readyToSell/delete/<%= item._id %>" method="get" class="d-inline">
+                      <button type="submit" class="btn btn-sm btn-square btn-neutral text-danger-hover" onclick="return confirm('Are you sure you want to delete this item?')">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </form>
                   </td>
                 </tr>
                 <% }); %>

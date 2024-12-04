@@ -55,6 +55,37 @@
         width: 100%;
       }
     }
+
+    .preview-box {
+      margin-top: 10px;
+      max-width: 200px;
+    }
+
+    .preview-box img, .preview-box video {
+      max-width: 100%;
+      margin-top: 5px;
+    }
+
+    .current-image, .current-video {
+      position: relative;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .current-documents .list-group-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .current-documents .bi {
+      font-size: 1.2rem;
+      color: #0066CC;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
   </style>
 </head>
 
@@ -142,13 +173,6 @@
                 </a>
               </li>
             <% } %>
-            <% if (userType === 'admin') { %>
-                <li class="nav-item">
-                  <a class="nav-link" href="/dashboard/outsourcing">
-                    <i class="bi bi-people"></i> Out Sourcing
-                  </a>
-                </li>
-              <% } %>
               <% if (userType === 'admin') { %>
                 <li class="nav-item">
                   <a class="nav-link" href="/dashboard/readyToSell">
@@ -181,69 +205,181 @@
       <!-- Main -->
       <main class="py-6 bg-surface-secondary">
         <div class="container-fluid">
-          <div class="table-responsive">
-            <form action="/dashboard/outsourcing/<%= outsourcing._id %>/edit" method="post" enctype="multipart/form-data">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" value="<%= outsourcing.name %>" required />
-
-              <label for="shortDescription">Short Description:</label>
-              <textarea id="shortDescription" name="shortDescription" required><%= outsourcing.shortDescription %></textarea>
-
-              <label for="heroTitle">Hero Title:</label>
-              <input type="text" id="heroTitle" name="heroTitle" value="<%= outsourcing.heroTitle %>" required />
-
-              <label for="heroDescription">Hero Description:</label>
-              <textarea id="heroDescription" name="heroDescription" required><%= outsourcing.heroDescription %></textarea>
-
-              <label for="image">Thumbnail:</label>
-              <input type="file" id="image" name="image" onchange="previewImage('image', 'preview')" />
-              <div class="imagePreview">
-                <img id="preview" src="/<%= outsourcing.image %>" alt="Thumbnail Preview" style="width: 300px; height: 300px; object-fit: contain;">
-
+          <div class="container mt-5">
+            <h2>Edit Outsourcing Item</h2>
+            <form action="/dashboard/outsourcing/<%= outsourcing._id %>/edit" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= outsourcing.name %>" required>
               </div>
 
-              <h3>Course Info</h3>
-              <label for="whatYoullLearn">What You'll Learn (comma-separated):</label>
-              <textarea id="whatYoullLearn" name="whatYoullLearn" required><%= outsourcing.courseInfo.whatYoullLearn.join(', ') %></textarea>
-
-              <label for="duration">Duration:</label>
-              <input type="text" id="duration" name="duration" value="<%= outsourcing.courseInfo.duration %>" required />
-
-              <label for="format">Format:</label>
-              <input type="text" id="format" name="format" value="<%= outsourcing.courseInfo.format %>" required />
-
-              <label for="price">Price:</label>
-              <input type="number" id="price" name="price" value="<%= outsourcing.courseInfo.price %>" required />
-
-              <label for="certification">Certification:</label>
-              <input type="checkbox" id="certification" name="certification" <% if (outsourcing.courseInfo.certification) { %>checked<% } %> />
-
-              <label for="benefits">Benefits (comma-separated):</label>
-              <textarea id="benefits" name="benefits" required><%= outsourcing.benefits.join(', ') %></textarea>
-
-              <h3>Instructor</h3>
-              <label for="instructorName">Name:</label>
-              <input type="text" id="instructorName" name="instructorName" value="<%= outsourcing.instructor.name %>" required />
-
-              <label for="instructorImage">Image:</label>
-              <input type="file" id="instructorImage" name="instructorImage" onchange="previewImage('instructorImage', 'instructorPreview')" />
-              <div class="imagePreview">
-                <img id="instructorPreview" src="/<%= outsourcing.instructor.image %>" alt="Instructor Image Preview" style="width: 300px; height: 300px; object-fit: contain;">
+              <div class="form-group">
+                <label for="shortDescription">Short Description</label>
+                <textarea class="form-control" id="shortDescription" name="shortDescription" required><%= outsourcing.shortDescription %></textarea>
               </div>
 
-              <label for="instructorBio">Bio:</label>
-              <textarea id="instructorBio" name="instructorBio" required><%= outsourcing.instructor.bio %></textarea>
+              <div class="form-group">
+                <label for="heroTitle">Hero Title</label>
+                <input type="text" class="form-control" id="heroTitle" name="heroTitle" value="<%= outsourcing.heroTitle %>" required>
+              </div>
 
-              <label for="type">Type:</label>
-              <select id="type" name="type" required>
-                  <option value="Frontend" <% if (outsourcing.type === 'Frontend') { %>selected<% } %>>Frontend</option>
-                  <option value="Backend" <% if (outsourcing.type === 'Backend') { %>selected<% } %>>Backend</option>
-                  <option value="Database" <% if (outsourcing.type === 'Database') { %>selected<% } %>>Database</option>
-                  <option value="Mobile" <% if (outsourcing.type === 'Mobile') { %>selected<% } %>>Mobile</option>
-                  <option value="E-commerce" <% if (outsourcing.type === 'E-commerce') { %>selected<% } %>>E-commerce</option>
-              </select>
+              <div class="form-group">
+                <label for="heroDescription">Hero Description</label>
+                <textarea class="form-control" id="heroDescription" name="heroDescription" required><%= outsourcing.heroDescription %></textarea>
+              </div>
 
-              <input type="submit" value="Update outsourcing" />
+              <div class="form-group">
+                <label for="thumbnail">Thumbnail Image:</label>
+                <% if (outsourcing.thumbnail) { %>
+                  <div class="current-thumbnail">
+                    <img src="/<%= outsourcing.thumbnail %>" alt="Current thumbnail" style="max-width: 200px; margin: 10px 0;" />
+                  </div>
+                <% } %>
+                <input type="file" id="thumbnail" name="thumbnail" accept="image/*" onchange="previewThumbnail(this)" />
+                <div id="thumbnail-preview" class="imagePreview">
+                  <img id="thumbnail-img" style="display: none; max-width: 200px; margin-top: 10px;" />
+                </div>
+              </div>
+
+              <!-- Multiple Image Uploads -->
+              <div class="mb-3">
+                <label>Images (Max 5):</label>
+                <% if (outsourcing.images && outsourcing.images.length > 0) { %>
+                  <div class="current-images mb-3">
+                    <h6>Current Images:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <% outsourcing.images.forEach((image, index) => { %>
+                        <div class="current-image">
+                          <img src="/<%= image %>" alt="Current image <%= index + 1 %>" style="max-width: 150px;" />
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                <% } %>
+                <div id="image-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="images" accept="image/*" class="form-control" onchange="previewSingleFile(this, 'images-preview-1')" />
+                    <div id="images-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addImageInput()" id="add-image-btn">Add Another Image</button>
+              </div>
+
+              <!-- Multiple Video Uploads -->
+              <div class="mb-3">
+                <label>Videos (Max 3):</label>
+                <% if (outsourcing.videos && outsourcing.videos.length > 0) { %>
+                  <div class="current-videos mb-3">
+                    <h6>Current Videos:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <% outsourcing.videos.forEach((video, index) => { %>
+                        <div class="current-video">
+                          <video style="max-width: 200px;" controls>
+                            <source src="/<%= video %>" type="video/mp4">
+                          </video>
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                <% } %>
+                <div id="video-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="videos" accept="video/*" class="form-control" onchange="previewSingleFile(this, 'videos-preview-1')" />
+                    <div id="videos-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addVideoInput()" id="add-video-btn">Add Another Video</button>
+              </div>
+
+              <!-- Multiple Document Uploads -->
+              <div class="mb-3">
+                <label>Documents (Max 5):</label>
+                <% if (outsourcing.documents && outsourcing.documents.length > 0) { %>
+                  <div class="current-documents mb-3">
+                    <h6>Current Documents:</h6>
+                    <div class="list-group">
+                      <% outsourcing.documents.forEach((doc, index) => { %>
+                        <div class="list-group-item">
+                          <i class="bi bi-file-earmark-text"></i>
+                          <%= doc.split('/').pop() %>
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                <% } %>
+                <div id="document-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="documents" accept=".pdf,.doc,.docx,.txt,.xml,.xls,.xlsx,.ppt,.pptx" class="form-control" onchange="previewSingleFile(this, 'documents-preview-1')" />
+                    <div id="documents-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addDocumentInput()" id="add-document-btn">Add Another Document</button>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="whatYoullLearn">What You'll Learn (comma-separated):</label>
+                <textarea class="form-control" id="whatYoullLearn" name="whatYoullLearn" required><%= outsourcing.courseInfo && outsourcing.courseInfo.whatYoullLearn ? outsourcing.courseInfo.whatYoullLearn.join(', ') : '' %></textarea>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="duration">Duration:</label>
+                <input type="text" class="form-control" id="duration" name="duration" value="<%= outsourcing.courseInfo ? outsourcing.courseInfo.duration : '' %>" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="format">Format:</label>
+                <input type="text" class="form-control" id="format" name="format" value="<%= outsourcing.courseInfo ? outsourcing.courseInfo.format : '' %>" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" name="price" value="<%= outsourcing.courseInfo ? outsourcing.courseInfo.price : '' %>" required>
+              </div>
+
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="certification" name="certification" <%= outsourcing.courseInfo && outsourcing.courseInfo.certification ? 'checked' : '' %>>
+                <label class="form-check-label" for="certification">Certification Available</label>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="benefits">Benefits (comma-separated):</label>
+                <textarea class="form-control" id="benefits" name="benefits" required><%= outsourcing.benefits ? outsourcing.benefits.join(', ') : '' %></textarea>
+              </div>
+
+              <!-- Instructor Information -->
+              <div class="form-group mb-3">
+                <label for="instructorName">Instructor Name:</label>
+                <input type="text" class="form-control" id="instructorName" name="instructorName" value="<%= outsourcing.instructor ? outsourcing.instructor.name : '' %>" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="instructorImage">Instructor Image:</label>
+                <% if (outsourcing.instructor && outsourcing.instructor.image) { %>
+                  <div class="mb-2">
+                    <img src="/<%= outsourcing.instructor.image %>" alt="Current Instructor Image" style="max-width: 200px;">
+                  </div>
+                <% } %>
+                <input type="file" class="form-control" id="instructorImage" name="instructorImage" accept="image/*">
+                <small class="form-text text-muted">Leave empty to keep current instructor image</small>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="instructorBio">Instructor Bio:</label>
+                <textarea class="form-control" id="instructorBio" name="instructorBio" required><%= outsourcing.instructor ? outsourcing.instructor.bio : '' %></textarea>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="type">Type:</label>
+                <select class="form-control" id="type" name="type" required>
+                  <option value="Frontend" <%= outsourcing.type === 'Frontend' ? 'selected' : '' %>>Frontend</option>
+                  <option value="Backend" <%= outsourcing.type === 'Backend' ? 'selected' : '' %>>Backend</option>
+                  <option value="Database" <%= outsourcing.type === 'Database' ? 'selected' : '' %>>Database</option>
+                  <option value="Mobile" <%= outsourcing.type === 'Mobile' ? 'selected' : '' %>>Mobile</option>
+                  <option value="E-commerce" <%= outsourcing.type === 'E-commerce' ? 'selected' : '' %>>E-commerce</option>
+                </select>
+              </div>
+
+              <input type="submit" value="Update" class="btn btn-primary mt-3" />
             </form>
           </div>
         </div>
@@ -252,21 +388,97 @@
   </div>
   <script src="/js/navToggle.js"></script>
   <script>
-    function previewImage(inputId, previewId) {
-      const preview = document.getElementById(previewId);
-      const file = document.getElementById(inputId).files[0];
-      const reader = new FileReader();
+    let imageCount = 1;
+    let videoCount = 1;
+    let documentCount = 1;
 
-      reader.addEventListener("load", function () {
-        // convert image file to base64 string
-        preview.src = reader.result;
-      }, false);
-
-      if (file) {
-        reader.readAsDataURL(file);
+    function previewThumbnail(input) {
+      const preview = document.getElementById('thumbnail-img');
+      preview.style.display = 'block';
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
       }
     }
-  </script>  
-  </body>
+
+    function previewSingleFile(input, previewId) {
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = '';
+      
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        if (file.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          preview.appendChild(img);
+        } else if (file.type.startsWith('video/')) {
+          const video = document.createElement('video');
+          video.src = URL.createObjectURL(file);
+          video.controls = true;
+          preview.appendChild(video);
+        } else {
+          const docPreview = document.createElement('div');
+          docPreview.className = 'file-preview';
+          docPreview.innerHTML = `<i class="bi bi-file-earmark-text"></i> ${file.name}`;
+          preview.appendChild(docPreview);
+        }
+      }
+    }
+
+    function addImageInput() {
+      if (imageCount < 5) {
+        imageCount++;
+        const container = document.getElementById('image-inputs');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+          <input type="file" name="images" accept="image/*" class="form-control" onchange="previewSingleFile(this, 'images-preview-${imageCount}')" />
+          <div id="images-preview-${imageCount}" class="preview-box"></div>
+        `;
+        container.appendChild(div);
+        if (imageCount === 5) {
+          document.getElementById('add-image-btn').style.display = 'none';
+        }
+      }
+    }
+
+    function addVideoInput() {
+      if (videoCount < 3) {
+        videoCount++;
+        const container = document.getElementById('video-inputs');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+          <input type="file" name="videos" accept="video/*" class="form-control" onchange="previewSingleFile(this, 'videos-preview-${videoCount}')" />
+          <div id="videos-preview-${videoCount}" class="preview-box"></div>
+        `;
+        container.appendChild(div);
+        if (videoCount === 3) {
+          document.getElementById('add-video-btn').style.display = 'none';
+        }
+      }
+    }
+
+    function addDocumentInput() {
+      if (documentCount < 5) {
+        documentCount++;
+        const container = document.getElementById('document-inputs');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+          <input type="file" name="documents" accept=".pdf,.doc,.docx,.txt,.xml,.xls,.xlsx,.ppt,.pptx" class="form-control" onchange="previewSingleFile(this, 'documents-preview-${documentCount}')" />
+          <div id="documents-preview-${documentCount}" class="preview-box"></div>
+        `;
+        container.appendChild(div);
+        if (documentCount === 5) {
+          document.getElementById('add-document-btn').style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
 
 </html>

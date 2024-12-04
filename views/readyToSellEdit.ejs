@@ -55,6 +55,37 @@
         width: 100%;
       }
     }
+
+    .preview-box {
+      margin-top: 10px;
+      max-width: 200px;
+    }
+
+    .preview-box img, .preview-box video {
+      max-width: 100%;
+      margin-top: 5px;
+    }
+
+    .current-image, .current-video {
+      position: relative;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .current-documents .list-group-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .current-documents .bi {
+      font-size: 1.2rem;
+      color: #0066CC;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
   </style>
 </head>
 
@@ -177,19 +208,102 @@
           <div class="table-responsive">
             <form action="/dashboard/readyToSell/edit/<%= item._id %>" method="post" enctype="multipart/form-data">
               <label for="title">Title:</label>
-              <input type="text" id="title" name="title" value="<%= item.title %>" />
-              <label for="shortDescription">Short Description:</label>  
-              <input type="text" id="shortDescription" name="shortDescription" value="<%= item.shortDescription %>" />
+              <input type="text" id="title" name="title" value="<%= item.title %>" required />
+              
+              <label for="shortDescription">Short Description:</label>
+              <input type="text" id="shortDescription" name="shortDescription" value="<%= item.shortDescription %>" required />
+              
               <label for="author">Author:</label>
-              <input type="text" id="author" name="author" value="<%= item.author %>" />
-              <label for="image">Thumbnail:</label>
-              <input type="file" id="image" name="image" onchange="previewImage()" />
-              <div class="imagePreview">
-                <img id="preview" src="/<%= item.image %>" alt="Preview" />
+              <input type="text" id="author" name="author" value="<%= item.author %>" required />
+
+              <label for="thumbnail">Thumbnail Image:</label>
+              <div class="current-thumbnail">
+                <img src="/<%= item.thumbnail %>" alt="Current thumbnail" style="max-width: 200px; margin: 10px 0;" />
               </div>
+              <input type="file" id="thumbnail" name="thumbnail" accept="image/*" onchange="previewThumbnail(this)" />
+              <div id="thumbnail-preview" class="imagePreview">
+                <img id="thumbnail-img" style="display: none; max-width: 200px; margin-top: 10px;" />
+              </div>
+              
+              <!-- Multiple Image Uploads -->
+              <div class="mb-3">
+                <label>Images (Max 5):</label>
+                <% if (item.images && item.images.length > 0) { %>
+                  <div class="current-images mb-3">
+                    <h6>Current Images:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <% item.images.forEach((image, index) => { %>
+                        <div class="current-image">
+                          <img src="/<%= image %>" alt="Current image <%= index + 1 %>" style="max-width: 150px;" />
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                <% } %>
+                <div id="image-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="images" accept="image/*" class="form-control" onchange="previewSingleFile(this, 'images-preview-1')" />
+                    <div id="images-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addImageInput()" id="add-image-btn">Add Another Image</button>
+              </div>
+              
+              <!-- Multiple Video Uploads -->
+              <div class="mb-3">
+                <label>Videos (Max 3):</label>
+                <% if (item.videos && item.videos.length > 0) { %>
+                  <div class="current-videos mb-3">
+                    <h6>Current Videos:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <% item.videos.forEach((video, index) => { %>
+                        <div class="current-video">
+                          <video style="max-width: 200px;" controls>
+                            <source src="/<%= video %>" type="video/mp4">
+                          </video>
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                <% } %>
+                <div id="video-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="videos" accept="video/*" class="form-control" onchange="previewSingleFile(this, 'videos-preview-1')" />
+                    <div id="videos-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addVideoInput()" id="add-video-btn">Add Another Video</button>
+              </div>
+              
+              <!-- Multiple Document Uploads -->
+              <div class="mb-3">
+                <label>Documents (Max 5):</label>
+                <% if (item.documents && item.documents.length > 0) { %>
+                  <div class="current-documents mb-3">
+                    <h6>Current Documents:</h6>
+                    <div class="list-group">
+                      <% item.documents.forEach((doc, index) => { %>
+                        <div class="list-group-item">
+                          <i class="bi bi-file-earmark-text"></i>
+                          <%= doc.split('/').pop() %>
+                        </div>
+                      <% }); %>
+                    </div>
+                  </div>
+                <% } %>
+                <div id="document-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="documents" accept=".pdf,.doc,.docx,.txt,.xml,.xls,.xlsx,.ppt,.pptx" class="form-control" onchange="previewSingleFile(this, 'documents-preview-1')" />
+                    <div id="documents-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addDocumentInput()" id="add-document-btn">Add Another Document</button>
+              </div>
+              
               <label for="url">URL:</label>
               <input type="text" id="url" name="url" value="<%= item.url %>" />
-              <input type="submit" value="Update" />
+              
+              <input type="submit" value="Update" class="btn btn-primary mt-3" />
             </form>
           </div>
         </div>
@@ -217,6 +331,98 @@
     if (file) {
       reader.readAsDataURL(file);
     }
+  }
+
+  function previewThumbnail(input) {
+    const preview = document.getElementById("thumbnail-img");
+    preview.style.display = "block";
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      function() {
+        // convert image file to base64 string
+        preview.src = reader.result;
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function previewSingleFile(input, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      function() {
+        // convert image file to base64 string
+        if (file.type.includes("image")) {
+          const img = document.createElement("img");
+          img.src = reader.result;
+          img.style.maxWidth = "100%";
+          img.style.marginTop = "5px";
+          preview.innerHTML = "";
+          preview.appendChild(img);
+        } else if (file.type.includes("video")) {
+          const video = document.createElement("video");
+          video.src = reader.result;
+          video.style.maxWidth = "100%";
+          video.style.marginTop = "5px";
+          video.controls = true;
+          preview.innerHTML = "";
+          preview.appendChild(video);
+        } else {
+          const text = document.createElement("p");
+          text.textContent = file.name;
+          preview.innerHTML = "";
+          preview.appendChild(text);
+        }
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function addImageInput() {
+    const imageInputs = document.getElementById("image-inputs");
+    const newInput = document.createElement("div");
+    newInput.className = "input-group mb-2";
+    newInput.innerHTML = `
+      <input type="file" name="images" accept="image/*" class="form-control" onchange="previewSingleFile(this, 'images-preview-${imageInputs.children.length + 1}')" />
+      <div id="images-preview-${imageInputs.children.length + 1}" class="preview-box"></div>
+    `;
+    imageInputs.appendChild(newInput);
+  }
+
+  function addVideoInput() {
+    const videoInputs = document.getElementById("video-inputs");
+    const newInput = document.createElement("div");
+    newInput.className = "input-group mb-2";
+    newInput.innerHTML = `
+      <input type="file" name="videos" accept="video/*" class="form-control" onchange="previewSingleFile(this, 'videos-preview-${videoInputs.children.length + 1}')" />
+      <div id="videos-preview-${videoInputs.children.length + 1}" class="preview-box"></div>
+    `;
+    videoInputs.appendChild(newInput);
+  }
+
+  function addDocumentInput() {
+    const documentInputs = document.getElementById("document-inputs");
+    const newInput = document.createElement("div");
+    newInput.className = "input-group mb-2";
+    newInput.innerHTML = `
+      <input type="file" name="documents" accept=".pdf,.doc,.docx,.txt,.xml,.xls,.xlsx,.ppt,.pptx" class="form-control" onchange="previewSingleFile(this, 'documents-preview-${documentInputs.children.length + 1}')" />
+      <div id="documents-preview-${documentInputs.children.length + 1}" class="preview-box"></div>
+    `;
+    documentInputs.appendChild(newInput);
   }
 
   // var quill = new Quill("#editor", {

@@ -40,13 +40,37 @@
       color: white;
       cursor: pointer;
     }
-    #preview, #instructorPreview {
-        width: 40%;
+    #preview {
+      width: 40%;
     }
     @media only screen and (max-width: 600px) {
-      #preview, #instructorPreview {
+      #preview {
         width: 100%;
       }
+    }
+    .preview-box {
+      margin-top: 10px;
+      min-height: 50px;
+    }
+    .preview-box img {
+      max-width: 150px;
+      max-height: 150px;
+      margin: 5px;
+    }
+    .preview-box video {
+      max-width: 150px;
+      max-height: 150px;
+      margin: 5px;
+    }
+    .input-group {
+      margin-bottom: 10px;
+    }
+    .file-preview {
+      display: inline-block;
+      padding: 5px;
+      margin: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -169,7 +193,7 @@
             <div class="row align-items-center">
               <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                 <!-- Title -->
-                <h1 class="h2 mb-0 ls-tight">Create Technology</h1>
+                <h1 class="h2 mb-0 ls-tight">Create Outsource</h1>
               </div>
             </div>
           </div>
@@ -180,89 +204,226 @@
         <div class="container-fluid">
           <div class="table-responsive">
             <form action="/dashboard/outsourcing/create" method="post" enctype="multipart/form-data">
+              <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required />
-  
+              </div>
+
+              <div class="form-group">
                 <label for="shortDescription">Short Description:</label>
                 <textarea id="shortDescription" name="shortDescription" required></textarea>
-  
+              </div>
+
+              <div class="form-group">
                 <label for="heroTitle">Hero Title:</label>
                 <input type="text" id="heroTitle" name="heroTitle" required />
-  
+              </div>
+
+              <div class="form-group">
                 <label for="heroDescription">Hero Description:</label>
                 <textarea id="heroDescription" name="heroDescription" required></textarea>
-  
-                <label for="image">Thumbnail:</label>
-                <input type="file" id="image" name="image" onchange="previewImage('image', 'preview')" />
-                <div class="imagePreview">
-                  <img id="preview" src="" alt="Thumbnail Preview" style="width: 300px; height: 300px; object-fit: contain;">
+              </div>
+
+              <div class="form-group">
+                <label for="thumbnail">Thumbnail Image:</label>
+                <input type="file" id="thumbnail" name="thumbnail" accept="image/*" onchange="previewThumbnail(this)" required />
+                <div id="thumbnail-preview" class="imagePreview">
+                  <img id="thumbnail-img" style="display: none; max-width: 200px; margin-top: 10px;" />
                 </div>
-  
-                <h3>Course Info</h3>
+              </div>
+
+              <!-- Multiple Image Uploads -->
+              <div class="mb-3">
+                <label>Images (Max 5):</label>
+                <div id="image-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="images" accept="image/*" class="form-control" onchange="previewSingleFile(this, 'images-preview-1')" />
+                    <div id="images-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addImageInput()" id="add-image-btn">Add Another Image</button>
+              </div>
+
+              <!-- Multiple Video Uploads -->
+              <div class="mb-3">
+                <label>Videos (Max 3):</label>
+                <div id="video-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="videos" accept="video/*" class="form-control" onchange="previewSingleFile(this, 'videos-preview-1')" />
+                    <div id="videos-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addVideoInput()" id="add-video-btn">Add Another Video</button>
+              </div>
+
+              <!-- Multiple Document Uploads -->
+              <div class="mb-3">
+                <label>Documents (Max 5):</label>
+                <div id="document-inputs">
+                  <div class="input-group mb-2">
+                    <input type="file" name="documents" accept=".pdf,.doc,.docx,.txt,.xml,.xls,.xlsx,.ppt,.pptx" class="form-control" onchange="previewSingleFile(this, 'documents-preview-1')" />
+                    <div id="documents-preview-1" class="preview-box"></div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addDocumentInput()" id="add-document-btn">Add Another Document</button>
+              </div>
+
+              <div class="form-group">
                 <label for="whatYoullLearn">What You'll Learn (comma-separated):</label>
                 <textarea id="whatYoullLearn" name="whatYoullLearn" required></textarea>
-  
+              </div>
+
+              <div class="form-group">
                 <label for="duration">Duration:</label>
                 <input type="text" id="duration" name="duration" required />
-  
+              </div>
+
+              <div class="form-group">
                 <label for="format">Format:</label>
                 <input type="text" id="format" name="format" required />
-  
+              </div>
+
+              <div class="form-group">
                 <label for="price">Price:</label>
                 <input type="number" id="price" name="price" required />
-  
-                <label for="certification">Certification:</label>
-                <input type="checkbox" id="certification" name="certification"  />
-  
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" id="certification" name="certification" />
+                <label class="form-check-label" for="certification">Certification Available</label>
+              </div>
+
+              <div class="form-group">
                 <label for="benefits">Benefits (comma-separated):</label>
                 <textarea id="benefits" name="benefits" required></textarea>
-  
-                <h3>Instructor</h3>
-                <label for="instructorName">Name:</label>
+              </div>
+
+              <div class="form-group">
+                <label for="instructorName">Instructor Name:</label>
                 <input type="text" id="instructorName" name="instructorName" required />
-  
-                <label for="instructorImage">Image:</label>
-                <input type="file" id="instructorImage" name="instructorImage" onchange="previewImage('instructorImage', 'instructorPreview')" />
-                <div class="imagePreview">
-                  <img id="instructorPreview" src="" alt="Instructor Image Preview" style="width: 300px; height: 300px; object-fit: contain;">
-                </div>
-  
-                <label for="instructorBio">Bio:</label>
+              </div>
+
+              <div class="form-group">
+                <label for="instructorImage">Instructor Image:</label>
+                <input type="file" id="instructorImage" name="instructorImage" accept="image/*" />
+              </div>
+
+              <div class="form-group">
+                <label for="instructorBio">Instructor Bio:</label>
                 <textarea id="instructorBio" name="instructorBio" required></textarea>
-                
+              </div>
+
+              <div class="form-group">
                 <label for="type">Type:</label>
                 <select id="type" name="type" required>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                    <option value="Database">Database</option>
-                    <option value="Mobile">Mobile</option>
-                    <option value="E-commerce">E-commerce</option>
+                  <option value="Frontend">Frontend</option>
+                  <option value="Backend">Backend</option>
+                  <option value="Database">Database</option>
+                  <option value="Mobile">Mobile</option>
+                  <option value="E-commerce">E-commerce</option>
                 </select>
-  
-                <input type="submit" value="Create Outsource" />
-              </form>
-            </div>
+              </div>
+
+              <input type="submit" value="Submit" class="btn btn-primary mt-3" />
+            </form>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
-    <script src="/js/navToggle.js"></script>
-    <script>
-      function previewImage(inputId, previewId) {
-        const preview = document.getElementById(previewId);
-        const file = document.getElementById(inputId).files[0];
+  </div>
+  <script src="/js/navToggle.js"></script>
+  <script>
+    let imageCount = 1;
+    let videoCount = 1;
+    let documentCount = 1;
+
+    function previewThumbnail(input) {
+      const preview = document.getElementById('thumbnail-img');
+      preview.style.display = 'block';
+      if (input.files && input.files[0]) {
         const reader = new FileReader();
-  
-        reader.addEventListener("load", function () {
-          // convert image file to base64 string
-          preview.src = reader.result;
-        }, false);
-  
-        if (file) {
-          reader.readAsDataURL(file);
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function previewSingleFile(input, previewId) {
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = '';
+      
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        if (file.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          preview.appendChild(img);
+        } else if (file.type.startsWith('video/')) {
+          const video = document.createElement('video');
+          video.src = URL.createObjectURL(file);
+          video.controls = true;
+          preview.appendChild(video);
+        } else {
+          const docPreview = document.createElement('div');
+          docPreview.className = 'file-preview';
+          docPreview.innerHTML = `<i class="bi bi-file-earmark-text"></i> ${file.name}`;
+          preview.appendChild(docPreview);
         }
       }
-    </script>
+    }
+
+    function addImageInput() {
+      if (imageCount < 5) {
+        imageCount++;
+        const container = document.getElementById('image-inputs');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+          <input type="file" name="images" accept="image/*" class="form-control" onchange="previewSingleFile(this, 'images-preview-${imageCount}')" />
+          <div id="images-preview-${imageCount}" class="preview-box"></div>
+        `;
+        container.appendChild(div);
+        if (imageCount === 5) {
+          document.getElementById('add-image-btn').style.display = 'none';
+        }
+      }
+    }
+
+    function addVideoInput() {
+      if (videoCount < 3) {
+        videoCount++;
+        const container = document.getElementById('video-inputs');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+          <input type="file" name="videos" accept="video/*" class="form-control" onchange="previewSingleFile(this, 'videos-preview-${videoCount}')" />
+          <div id="videos-preview-${videoCount}" class="preview-box"></div>
+        `;
+        container.appendChild(div);
+        if (videoCount === 3) {
+          document.getElementById('add-video-btn').style.display = 'none';
+        }
+      }
+    }
+
+    function addDocumentInput() {
+      if (documentCount < 5) {
+        documentCount++;
+        const container = document.getElementById('document-inputs');
+        const div = document.createElement('div');
+        div.className = 'input-group mb-2';
+        div.innerHTML = `
+          <input type="file" name="documents" accept=".pdf,.doc,.docx,.txt,.xml,.xls,.xlsx,.ppt,.pptx" class="form-control" onchange="previewSingleFile(this, 'documents-preview-${documentCount}')" />
+          <div id="documents-preview-${documentCount}" class="preview-box"></div>
+        `;
+        container.appendChild(div);
+        if (documentCount === 5) {
+          document.getElementById('add-document-btn').style.display = 'none';
+        }
+      }
+    }
+  </script>
 </body>
 
 </html>

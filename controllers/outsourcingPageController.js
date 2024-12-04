@@ -4,7 +4,7 @@ exports.outsourcing_index = async function(req, res) {
     try {
         const outsourcingServices = await Outsourcing.find({});
         const loggedin = req.session.user;
-        res.render('outsourcing', { outsourcing: outsourcingServices,loggedin });
+        res.render('outsourcingPageIndex', { outsourcing: outsourcingServices,loggedin });
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while fetching outsourcing services');
