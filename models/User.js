@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
   },
   userType: {
     type: String,
-    enum: ['admin', 'agent', 'hr','blog writer'],
+    enum: ['admin', 'agent', 'hr','blog writer','user'],
     required: [true, 'Please provide user type']
   },
   leadAccess: {
