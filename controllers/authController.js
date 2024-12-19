@@ -15,12 +15,7 @@ exports.signup = async (req, res) => {
     // If not, create a new user
     const user = await User.create({ username, password, userType });
     req.session.user = user;
-    res.status(201).json({
-      status: 'success',
-      data: {
-        user
-      }
-    });
+    res.redirect('/');
   } catch (err) {
     res.status(400).json({
       status: 'error',

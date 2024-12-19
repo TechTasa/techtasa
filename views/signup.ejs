@@ -1,22 +1,211 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sign Up</title>
-  <link rel="stylesheet" type="text/css" href="/css/signup.css">
+  <title>Create your account</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 440px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      background-color: #2563eb;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+    }
+
+    .header h1 {
+      color: #1a1a1a;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+      transition: all 0.2s ease-out;
+      background-color: white;
+      padding: 0 4px;
+      pointer-events: none;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: 0;
+      transform: translateY(-50%) scale(0.8);
+      color: #2563eb;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    .password-hint {
+      font-size: 14px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    .terms {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .sign-in {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+    }
+
+    /* Custom placeholder styling */
+    input::placeholder {
+      color: transparent;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px;
+      }
+
+      .header h1 {
+        font-size: 22px;
+      }
+
+      input, button {
+        padding: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Sign Up</h1>
-  <form action="/auth/signup" method="POST">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <select name="userType" required>
-      <option value="">Select user type</option>
-      <option value="admin">Admin</option>
-      <option value="agent">Agent</option>
-      <option value="hr">HR</option>
-      <option value="user">User</option>
-    </select>
-    <button type="submit">Sign Up</button>
-  </form>
+  <div class="container">
+    <div class="header">
+      <div class="logo"></div>
+      <h1>Create your account</h1>
+      <p>to continue to the platform</p>
+    </div>
+
+    <div class="card">
+      <form action="/auth/signup" method="POST">
+        <div class="form-group">
+          <input type="text" name="username" id="username" placeholder=" " required>
+          <label for="username">Username</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="password" id="password" placeholder=" " required>
+          <label for="password">Password</label>
+          <p class="password-hint">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+        </div>
+
+        <input type="hidden" name="userType" value="user">
+
+        <button type="submit">Create account</button>
+
+        <p class="terms">
+          By creating an account, you agree to our 
+          <a href="#">Terms of Service</a> and 
+          <a href="#">Privacy Policy</a>
+        </p>
+
+        <p class="sign-in">
+          Already have an account? 
+          <a href="/auth/login">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
