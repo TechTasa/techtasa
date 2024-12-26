@@ -23,32 +23,66 @@ h1 {
 #about-us-image {
     width: 100%;
     object-fit: cover;
-    margin-top: 60px;
+    /* margin-top: 60px; */
 }
 
+/* Main structure */
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
-
+/* Section Styling */
 .section {
-    padding: 100px 20px;
+    padding: 50px 20px;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 }
+
 .specialty-section {
-    padding: 15px 20px;
+    padding: 30px 20px;
     text-align: center;
     width: 100%;
 }
 
+/* Flex Containers */
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.flex-container img {
+    width: 100%; /* Images are responsive */
+    max-width: 400px; /* Limit image size */
+    height: auto;
+    border-radius: 10px;
+}
+
+.flex-container .text {
+    width: 100%; /* Full width for small screens */
+    max-width: 600px;
+    color: white;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.reverse {
+    flex-direction: column-reverse; /* Stack in reverse for mobile */
+}
+
+/* Specialty Cards */
 .specialty-card-container {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow cards to stack */
 }
 
 .specialty-card {
@@ -56,7 +90,8 @@ main {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 90%; /* Full width on mobile */
+    max-width: 300px;
     color: green;
     text-align: left;
     margin: 10px;
@@ -71,24 +106,7 @@ main {
     color: white;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-    .specialty-card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .specialty-card {
-        width: 80%;
-    }
-}
-
-@media (max-width: 600px) {
-    .specialty-card {
-        width: 100%;
-    }
-}
-
+/* Card Container */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -101,45 +119,61 @@ main {
     color: #FFFFFF; /* White text */
     padding: 20px;
     margin: 10px;
-    width: 30%;
-    min-width: 250px;
+    width: 90%; /* Full width on mobile */
+    max-width: 300px; /* Limit card width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
 .card h3 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-bottom: 10px;
 }
 
 .card p {
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
-.section:nth-child(even) {
-    background: #111;
+/* Media Queries for Responsiveness */
+@media (max-width: 900px) {
+    .flex-container {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center;
+    }
+
+    .specialty-card-container, .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .specialty-card, .card {
+        width: 80%;
+    }
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
+@media (max-width: 600px) {
+    .section {
+        padding: 30px 10px;
+    }
 
-.flex-container img {
-    width: 40%;
-    height: auto;
-}
-.text{
-    color:white;
-    line-height: 30px;
-}
-.flex-container .text {
-    width: 50%;
-}
+    .flex-container {
+        flex-direction: column;
+    }
 
-.reverse {
-    flex-direction: row-reverse;
+    .flex-container .text {
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .specialty-card, .card {
+        width: 100%; /* Take full width on very small screens */
+    }
+
+    h2, h3 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
 }
