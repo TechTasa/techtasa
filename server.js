@@ -28,6 +28,8 @@ const outsourcingPageRoutes = require('./routes/outsourcingPageRoutes'); // Impo
 const Blog = require('./models/Blog');
 const readyToSellRoutes = require('./routes/readyToSellRoutes'); // Import ready to sell routes
 const readyToSellPageRoutes = require('./routes/readyToSellPageRoutes'); // Import ready to sell page routes
+// Add to existing requires
+const chatRoutes = require('./routes/chatRoutes');
 
 const app = express();
 
@@ -79,7 +81,8 @@ app.use('/', testimonialRoutes);
 app.use('/technology', technologyPageRoutes);
 app.use('/outsourcing', outsourcingPageRoutes); // Add outsourcing page routes
 app.use('/readyToSell', readyToSellPageRoutes);
-
+// Add to route configurations
+app.use('/chat', chatRoutes);
 // Home Route
 app.get('/', async (req, res) => {
     const loggedin = req.session.user;
